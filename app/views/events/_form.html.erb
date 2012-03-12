@@ -5,8 +5,13 @@
     <%= f.input :description, :input_html => {:maxlength => 89 }%>
     <%= f.input :date, :as => :string %>
     <%= f.input :time, :prompt => {:minute => 'Minute', :hour => 'Hour'}, :minute_step => 15 %>
-    <%= f.input :venue_id %>
-    <%= f.input :price, :input_html => {:maxlength => 15 }%>
+    <%= f.association :venue, hint: add_new_venue %> 
+    <div class="controls help-block">
+      <%= f.hint  submit_price %><br>
+    </div>
+    <div id="price_input" style="display: none">
+      <%= f.input :price, :input_html => { :maxlength => 15 }%>
+    </div>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
