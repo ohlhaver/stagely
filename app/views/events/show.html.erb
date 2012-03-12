@@ -7,7 +7,12 @@
 
 <p>
   <b>Date</b><br>
-  <%= @event.date %>
+  <%= @event.date.to_date %>
+</p>
+
+<p>
+  <b>Time</b><br>
+  <%= @event.time.to_s(:time) %>
 </p>
 
 <p>

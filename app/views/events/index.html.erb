@@ -2,18 +2,17 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Description</th>
-      <th>Created at</th>
-      <th>Actions</th>
+      <th>Date</th>
+      <th>Time</th>
     </tr>
   </thead>
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.id %></td>
         <td><%= link_to event.description, event_path(event) %></td>
-        <td><%= event.created_at %></td>
+        <td><%= event.date.to_date %></td>
+        <td><%= event.time.to_s(:time) %></td>
         <td>
           <%= link_to 'Edit', edit_event_path(event), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', event_path(event), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
