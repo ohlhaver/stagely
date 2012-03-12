@@ -3,7 +3,7 @@
     <legend><%= controller.action_name.capitalize %> Event</legend>
 
     <%= f.input :description, :input_html => {:maxlength => 89 }%>
-    <%= f.input :date %>
+    <%= f.input :date,:prompt => {:day => 'Day', :month => 'Month', :year => 'Year', :minute => 'Minute', :hour => 'Hour'}, :minute_step => 15, :start_year => Date.today.year, :end_year => Date.today.year %>
     <%= f.input :venue_id %>
     <%= f.input :price, :input_html => {:maxlength => 15 }%>
 
