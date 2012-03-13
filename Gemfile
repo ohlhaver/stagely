@@ -42,3 +42,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 
 gem 'bootstrap-datepicker-rails'
+
+gem 'thinking-sphinx', '2.0.10'
+
+
