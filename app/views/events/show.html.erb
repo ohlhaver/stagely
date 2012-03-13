@@ -1,22 +1,33 @@
-<p>
-<h3><%= @event.description %></h3>
-</p>
+<div class="span7">
+	<p>
+	<h3><%= @event.description %></h3>
+	</p>
 
-<%= @event.date.to_date.to_s(:short) %>, 
-<%= @event.time.to_s(:time) %><br>
-<%= link_to @event.venue.name, venue_path(@event.venue) %> - <%= @event.venue.street %> - <%= @event.venue.town %>
+	<%= @event.date.to_date.to_s(:short) %>, 
+	<%= @event.time.to_s(:time) %><br>
+	<%= link_to @event.venue.name, venue_path(@event.venue) %> - <%= @event.venue.street %> - <%= @event.venue.town %>
 
 
-<p>
-<% if @event.price? %>
-<%= @event.price + "€" %>
-<%end%>
-</p>
-<%= @event.keywords %>
+	<p>
+	<% if @event.price? %>
+	<%= @event.price + "€" %>
+	<%end%>
+	</p>
+	<%= @event.keywords %>
 
-<div class="form-actions">
-  <%= link_to 'Back', events_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_event_path(@event), :class => 'btn' %>
-  <%= link_to 'Delete', event_path(@event), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+	<div class="form-actions">
+	  <%= link_to 'Back', events_path, :class => 'btn'  %>
+	  <%= link_to 'Edit', edit_event_path(@event), :class => 'btn' %>
+	  <%= link_to 'Delete', event_path(@event), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+	</div>
 </div>
 
+<div class="span5">
+
+	<table class="table table-striped">
+	  <tbody>
+	<%= render @related_events %>
+	  </tbody>
+	</table>
+ 
+</div>

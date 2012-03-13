@@ -15,6 +15,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
 
+    @related_events = Event.search @event.keywords, :match_mode => :any
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
