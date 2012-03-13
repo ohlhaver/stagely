@@ -5,7 +5,7 @@
     <%= f.input :name %>
     <%= f.input :street %>
     <%= f.input :postal_code %>
-    <%= f.input :town %>
+    <%= f.input :town, :input_html => {:maxlength => 10 }%>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>

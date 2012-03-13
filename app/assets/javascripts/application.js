@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+//= require bootstrap-datepicker
 
 $(function (){
         $('#event_date').datepicker();

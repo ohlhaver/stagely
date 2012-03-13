@@ -25,6 +25,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
 
+
 end
 
 gem 'jquery-rails'
@@ -45,3 +46,5 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'simple_form'
+
+gem 'bootstrap-datepicker-rails'
