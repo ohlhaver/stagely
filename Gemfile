@@ -45,4 +45,4 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'thinking-sphinx', '2.0.10'
 
-
+gem 'flying-sphinx',   '0.6.2'
