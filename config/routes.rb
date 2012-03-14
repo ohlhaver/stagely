@@ -3,6 +3,8 @@ Stagely::Application.routes.draw do
 
   resources :events
 
+  match '/search',  to: 'events#search'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

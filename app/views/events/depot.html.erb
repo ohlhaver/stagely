@@ -1,0 +1,7 @@
+	<div class="related_links">
+	Suggestions:
+		<% @keywords.each do |keyword| %>
+		<%= link_to keyword, :action => "search", :q => keyword %> 
+		<%end%>
+	</div>
+	<br>

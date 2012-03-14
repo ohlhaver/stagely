@@ -10,12 +10,18 @@ class EventsController < ApplicationController
     end
   end
 
+  def search
+    @events = Event.search params[:q], :match_mode => :any
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
 
     @related_events = Event.search @event.keywords, :match_mode => :any
+
+    @keywords = @event.keywords.split(/\s+/)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -82,4 +88,8 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+
 end
