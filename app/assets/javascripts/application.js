@@ -19,3 +19,5 @@
 $(function (){
         $('#event_date').datepicker();
 });
+
+$(".collapse").collapse()

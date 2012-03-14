@@ -1,11 +1,11 @@
 <%= simple_form_for @event, :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Event</legend>
-
+    <%= f.association :venue, hint: add_new_venue %> 
     <%= f.input :description, :input_html => {:maxlength => 95 }%>
     <%= f.input :date, :as => :string %>
     <%= f.input :time, :prompt => {:minute => 'Minute', :hour => 'Hour'}, :minute_step => 15 %>
-    <%= f.association :venue, hint: add_new_venue %> 
+    
     <div class="controls help-block">
       <%= f.hint  submit_price %><br>
     </div>
