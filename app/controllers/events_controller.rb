@@ -21,7 +21,7 @@ class EventsController < ApplicationController
 
     @related_events = Event.search @event.keywords, :match_mode => :any
 
-    @keywords = @event.keywords.split(/\s+/)
+    #@keywords = @event.keywords.split(/\s+/)
 
     respond_to do |format|
       format.html # show.html.erb
