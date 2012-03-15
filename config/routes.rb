@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Stagely::Application.routes.draw do
   resources :venues
 

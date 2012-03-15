@@ -50,3 +50,5 @@ gem 'flying-sphinx',   '0.6.2'
 gem 'less'
 gem 'less-rails'
 gem 'less-rails-bootstrap'
+
+gem 'magic_encoding'

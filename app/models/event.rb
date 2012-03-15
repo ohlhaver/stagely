@@ -1,10 +1,11 @@
+# -*- encoding : utf-8 -*-
 class Event < ActiveRecord::Base
 	validates_presence_of :description, :venue_id, :time, :date
 	validates_length_of :description, :maximum => 95
 	
 	belongs_to :venue
 
-	before_save :generate_keywords 
+	before_save :generate_keywords
 
 	define_index do
 	    # fields
@@ -207,4 +208,8 @@ class Event < ActiveRecord::Base
 
 
         end
+
+
+
+        
 end
