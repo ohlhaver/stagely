@@ -2,15 +2,15 @@
 	<p>
 	<h3><%= @event.description %></h3>
 	</p>
-
+	<p>
 	<%= @event.date.to_date.to_s(:short) %>, 
 	<%= @event.time.to_s(:time) %><br>
 	<%= link_to @event.venue.name, venue_path(@event.venue) %> - <%= @event.venue.street %> - <%= @event.venue.town %>
 
-
+	</p>
 	<p>
 	<% if @event.price? %>
-	<%= @event.price + "€" %>
+	<%= @event.price %>
 	<%end%>
 	</p>
 

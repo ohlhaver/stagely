@@ -4,6 +4,8 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
 
+    find_topics(@events)
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -12,6 +14,7 @@ class EventsController < ApplicationController
 
   def search
     @events = Event.search params[:q], :match_mode => :any
+    find_topics(@events)
   end
 
   # GET /events/1
@@ -89,6 +92,21 @@ class EventsController < ApplicationController
     end
   end
 
+  def find_topics(events)
+    all_keywords =""
+      events.each do |e|
+        (all_keywords = all_keywords + e.keywords) 
+      end
+
+      all_keywords_array = all_keywords.split(/\s+/)
+      keywords_with_values = all_keywords_array.inject(Hash.new(0)) {|h,x| h[x]+=1;h}
+      ranked_array = keywords_with_values.sort_by { |key, value| -value }
+      words =[]
+      ranked_array.first(5).each do |f|
+        words = words.push(f[0])
+      end
+      @words=words
+  end
 
 
 

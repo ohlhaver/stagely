@@ -1,9 +1,26 @@
-<table class="table table-striped">
-  <thead>
-  </thead>
-  <tbody>
-<%= render @events %>
-  </tbody>
-</table>
+<div class="span10">
+	<table class="table table-striped">
+	  <tbody>
+	<%= render @events %>
+	  </tbody>
+	</table>
 
-<%= link_to 'New', new_event_path, :class => 'btn btn-primary' %>
+
+	<%= link_to 'New', new_event_path, :class => 'btn btn-primary' %>
+</div>
+
+<div class="span2">
+		<div class="topic_navigation">
+		Topics:
+		
+		<br><br>
+		<table class="table table-striped">
+	  <tbody>
+			<% @words.each do |keyword| %>
+			<%= link_to keyword, :action => "search", :q => keyword %> <br><br>
+			<%end%>
+	  </tbody>
+
+	</table>
+	</div>
+</div>
