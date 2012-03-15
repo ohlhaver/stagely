@@ -21,11 +21,18 @@
 
 
     <div class="container">
-      <div id="search">
-        <%= form_tag("/search", :method => "get") do %>
-          <%= text_field_tag(:q) %>
-          <%= submit_tag("Search") %>
-        <% end %>
+      <div class="row">
+        <div class="span6">
+          <div id="search">
+            <%= form_tag("/search", :method => "get") do %>
+              <%= text_field_tag(:q) %>
+              <%= submit_tag("Search") %>
+            <% end %>
+          </div>
+        </div>
+        <div id="post_event_button">
+            <%= link_to 'post event', new_event_path, :class => 'btn btn-primary' %>
+        </div>
       </div>
     </div>
 
