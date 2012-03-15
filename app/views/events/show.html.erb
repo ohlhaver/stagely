@@ -2,18 +2,16 @@
 	<p>
 	<h3><%= @event.description %></h3>
 	</p>
-	<p>
+	
 	<%= @event.date.to_date.to_s(:short) %>, 
 	<%= @event.time.to_s(:time) %><br>
-	<%= link_to @event.venue.name, venue_path(@event.venue) %> - <%= @event.venue.street %> - <%= @event.venue.town %>
+	<%= link_to complete_address(@event), venue_path(@event.venue) %> - <%= @event.venue.town %>
 
-	</p>
-	<p>
+	<br>
 	<% if @event.price? %>
-	<%= @event.price %>
+	Entrance <%= @event.price %>
 	<%end%>
-	</p>
-
+	
 	<div class="form-actions">
 	  <%= link_to 'Back', events_path, :class => 'btn'  %>
 	  <%= link_to 'Edit', edit_event_path(@event), :class => 'btn' %>
@@ -22,9 +20,7 @@
 </div>
 
 <div class="span5">
-	<div class="related_links">
-	Suggestions
-	</div>
+
 	<br>
 	<table class="table table-striped">
 	  <tbody>
