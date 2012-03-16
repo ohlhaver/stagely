@@ -6,11 +6,10 @@
 	
 	<%= @event.date.to_date.to_s(:short) %>, 
 	<%= @event.time.to_s(:time) %><br>
-	<%= link_to complete_address(@event), venue_path(@event.venue) %> - <%= @event.venue.town %>
-	
+	<%= render partial: "venues/venue_address"%>
 	<br>
 	<% if @event.price? %>
-	Entrance <%= @event.price %>
+	<%= @event.price %>
 	<%end%>
 	
 	<div class="form-actions">

@@ -6,7 +6,7 @@
 	</p>
 
 	<p>
-	<%= @venue.street %> - <%= @venue.postal_code %> - <%= @venue.town %>
+	<%= @venue.street %><%= link_to image_tag("external-link.gif"),"http://maps.google.de/maps?q=#{@venue.street}+#{@venue.postal_code}" %> - <%= @venue.postal_code %> - <%= @venue.town %>
 	</p>
 
 	<table class="table table-striped">
