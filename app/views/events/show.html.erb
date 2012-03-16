@@ -1,5 +1,5 @@
 <% provide :title, @event.description %>
-<div class="span8">
+<div class="span7">
 	<p>
 	<h3><%= @event.description %></h3>
 	</p>
@@ -13,7 +13,7 @@
 	<%end%>
 	
 	<div class="form-actions">
-	    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="<%=tweet_text(@event)%>" data-url="<%=shoort_url(request.url)%>" data-counturl="<%=shoort_url(request.url)%>" data-size="large">Tweet</a>
+	    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="<%=tweet_text(@event)%>" data-url="<%=shoort_url(request.url)%>" data-counturl="<%=shoort_url(request.url)%>" data-size="small">Tweet</a>
 
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
@@ -23,7 +23,7 @@
 	  <%= link_to 'Delete', event_path(@event), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
 </div>
 
-<div class="span4">
+<div class="span5">
 	<div class="related_links">
 	Related:
 	</div>
