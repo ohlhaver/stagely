@@ -16,6 +16,10 @@ class Event < ActiveRecord::Base
 	  
   	end
 
+        def to_param
+                "#{id}-#{self.description.gsub(/\W/, '-')}"
+        end
+
   	private
 
   	def generate_keywords

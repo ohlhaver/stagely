@@ -25,6 +25,7 @@ class EventsController < ApplicationController
 
     @related_events = Event.search @event.keywords, :match_mode => :any
 
+    #Shortener::ShortenedUrl.generate(request.url)
     #@keywords = @event.keywords.split(/\s+/)
 
     respond_to do |format|

@@ -6,6 +6,10 @@ class Venue < ActiveRecord::Base
 	has_many :events
 	before_save :generate_town
 
+	 def to_param
+                "#{id}-#{self.name.gsub(/\W/, '-')}"
+     end
+
 	def generate_town
 	    postal_code = self.postal_code
 

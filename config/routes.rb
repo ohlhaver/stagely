@@ -5,6 +5,7 @@ Stagely::Application.routes.draw do
   resources :events
 
   match '/search',  to: 'events#search'
+  match '/:id' => "shortener/shortened_urls#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

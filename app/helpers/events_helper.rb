@@ -13,5 +13,13 @@ module EventsHelper
 		return link_to_function "enter price", "$('#price_input, .icon').toggle('price_input')"
 	end
 
+	def shoort_url(url)
+	    short_url = Shortener::ShortenedUrl.generate(url)
+	    short_url ? url_for(:controller => :"shortener/shortened_urls", :action => :show, :id => short_url.unique_key, :only_path => false) : url
+	end
+
+	def tweet_text(event)
+		"#{event.description} - #{event.date.to_date.to_s(:short)} - #{event.time.to_s(:time)} - #{event.venue.town} -"
+	end
 
 end
