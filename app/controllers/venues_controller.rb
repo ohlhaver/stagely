@@ -17,6 +17,8 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
     @events = @venue.events.all
 
+    @related_events = Event.search find_topics(@events), :match_mode => :any
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @venue }

@@ -1,4 +1,16 @@
-<div class="span2">
+<div class="span8">
+	<table class="table table-striped">
+	  <tbody>
+	<%= render @events %>
+	  </tbody>
+	</table>
+
+</div>
+
+<div class="span4">
+
+	<%= render "layouts/search" %>
+
 		<div class="topic_navigation">
 		Topics:
 		
@@ -14,12 +26,5 @@
 	</div>
 </div>
 
-<div class="span10">
-	<table class="table table-striped">
-	  <tbody>
-	<%= render @events %>
-	  </tbody>
-	</table>
 
-</div>
 

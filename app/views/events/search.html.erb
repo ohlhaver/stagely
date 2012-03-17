@@ -1,5 +1,24 @@
 <% provide :title, params[:q] %>
-<div class="span2">
+
+
+
+<div class="span8">
+
+
+<h3>Results for '<%= params[:q]%>'</h3>
+
+<table class="table table-striped">
+  <thead>
+  </thead>
+  <tbody>
+<%= render @events %>
+  </tbody>
+</table>
+
+</div>
+
+<div class="span4">
+	<%= render "layouts/search" %>
 		<div class="topic_navigation">
 		Subtopics:
 		
@@ -13,21 +32,5 @@
 
 	</table>
 	</div>
-</div>
-
-
-<div class="span10">
-
-<p>
-<h3>Results for '<%= params[:q]%>'</h3>
-</p>
-<table class="table table-striped">
-  <thead>
-  </thead>
-  <tbody>
-<%= render @events %>
-  </tbody>
-</table>
-
 </div>
 

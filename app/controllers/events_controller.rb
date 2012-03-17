@@ -94,6 +94,8 @@ class EventsController < ApplicationController
     end
   end
 
+  protected
+
   def find_topics(events)
     all_keywords =""
       events.each do |e|

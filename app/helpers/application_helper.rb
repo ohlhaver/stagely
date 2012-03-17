@@ -10,9 +10,7 @@ module ApplicationHelper
 	    end
  	end
 
-	  def twitter_url(tweet_url, tweet_text)
-		tweet_url = shoort_url(request.url)
-		"http://twitter.com/home?status=#{tweet_text} #{tweet_url}"
-	  end
+
+
 
 end

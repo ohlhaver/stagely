@@ -1,8 +1,8 @@
 <% provide :title, @event.description %>
-<div class="span7">
-	<p>
+<div class="span8">
+
 	<h3><%= @event.description %></h3>
-	</p>
+	
 	
 	<%= @event.date.to_date.to_s(:short) %>, 
 	<%= @event.time.to_s(:time) %><br>
@@ -11,19 +11,30 @@
 	<% if @event.price? %>
 	<%= @event.price %>
 	<%end%>
-	
-	<div class="form-actions">
-	    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="<%=tweet_text(@event)%>" data-url="<%=shoort_url(request.url)%>" data-counturl="<%=shoort_url(request.url)%>" data-size="small">Tweet</a>
+	<br><br>
+
+	<div class="fb-like" data-href="<%= request.url%>" data-send="true" data-layout="button_count" data-width="245" data-show-faces="true"></div>
+		<div class ="tweetit">
+		    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="<%=tweet_text(@event)%>" data-url="<%=shoort_url(request.url)%>" data-counturl="<%=shoort_url(request.url)%>" data-size="small">Tweet</a>
 
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    	</div>
+    
+	
+	
 
-	</div>
+	<div class="fb-comments" data-href="<%= request.url%>" data-num-posts="10" data-width="545"></div>
+
+	<div class="form-actions">
+
 	  <%= link_to 'Back', events_path, :class => 'btn'  %>
 	  <%= link_to 'Edit', edit_event_path(@event), :class => 'btn' %>
 	  <%= link_to 'Delete', event_path(@event), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+	</div>
 </div>
 
-<div class="span5">
+<div class="span4">
+<%= render "layouts/search" %>
 	<div class="related_links">
 	Related:
 	</div>

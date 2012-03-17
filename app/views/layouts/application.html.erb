@@ -14,45 +14,37 @@
   <header>
     <div id="logo">
     <%= link_to "stage.ly", root_path%>
-        <% if params[:action] == "neverindex"%>
-      <div id="slogan">All classical music in Berlin!</div>
-    <%end%>
     </div>
 
-
-    <div class="container">
-      <div class="row">
-        <div class="span6">
-          <div id="search" >
-            <%= form_tag("/search", :method => "get") do %>
-              <%= text_field_tag(:q) %>
-              <%= submit_tag("Search") %>
-            <% end %>
-          </div>
-        </div>
-        <div id="post_event_button">
-            <%= link_to 'add an event', new_event_path, :class => 'btn btn-primary' %>
-        </div>
-      </div>
-    </div>
+        
 
   </header>
 
   <body>
-      <div class="container">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=367315919957325";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="container">
       <% flash.each do |name, msg| %>
         <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
           <a class="close" data-dismiss="alert">×</a>
           <%= msg %>
         </div>
       <% end %>
-        <div class="row">
+      <div class="row">
+          
           <%= yield %>
         </div>
       </div>
 
   </body>
   <div class ="footer">
-  <%= link_to "(c) stage.ly", "http://www.youtube.com/watch?v=NisCkxU544c"%>
+  <%= link_to "(c) stage.ly", "http://www.youtube.com/watch?v=NisCkxU544c"%> - <%= link_to 'add an event', new_event_path%>
   </div>
 </html>
