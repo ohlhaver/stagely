@@ -25,13 +25,14 @@
 	
 
 	<div class="fb-comments" data-href="<%= request.url%>" data-num-posts="10" data-width="545"></div>
+	<% if current_user %>
+		<div class="form-actions">
 
-	<div class="form-actions">
-
-	  <%= link_to 'Back', events_path, :class => 'btn'  %>
-	  <%= link_to 'Edit', edit_event_path(@event), :class => 'btn' %>
-	  <%= link_to 'Delete', event_path(@event), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
-	</div>
+		  <%= link_to 'Back', events_path, :class => 'btn'  %>
+		  <%= link_to 'Edit', edit_event_path(@event), :class => 'btn' %>
+		  <%= link_to 'Delete', event_path(@event), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+		</div>
+	<%end%>
 </div>
 
 <div class="span4">

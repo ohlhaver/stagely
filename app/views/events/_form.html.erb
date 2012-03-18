@@ -5,14 +5,7 @@
     <%= f.input :description, :input_html => {:maxlength => 95 }%>
     <%= f.input :date, :as => :string %>
     <%= f.input :time, :prompt => {:minute => 'Minute', :hour => 'Hour'}, :minute_step => 15 %>
-    
-    <div class="controls help-block">
-      <%= f.hint  submit_price %><br>
-    </div>
-    <div id="price_input" style="display: none">
-      <%= f.input :price, :input_html => { :maxlength => 15 }%>
-    </div>
-
+    <%= f.input :price, :input_html => { :maxlength => 15 }%>
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to 'Cancel', events_path, :class => 'btn' %>

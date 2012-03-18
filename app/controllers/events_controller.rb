@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class EventsController < ApplicationController
+  before_filter :authorize, only: [:edit, :update, :new, :create, :destroy]
   # GET /events
   # GET /events.json
   def index

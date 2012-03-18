@@ -7,7 +7,9 @@
       <th>Name</th>
       <th>Town</th>
       <th>Events</th>
-      <th>Actions</th>
+      <% if current_user %>
+        <th>Actions</th>
+      <%end%>
     </tr>
   </thead>
   <tbody>
@@ -17,12 +19,15 @@
         <td><%= venue.town %></td>
         <td><%= venue.events.size %></td>
         <td>
+        <% if current_user %>
           <%= link_to 'Edit', edit_venue_path(venue), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', venue_path(venue), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        <%end%>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<% if current_user %>
 <%= link_to 'New', new_venue_path, :class => 'btn btn-primary' %>
+<%end%>

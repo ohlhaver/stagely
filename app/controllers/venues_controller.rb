@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class VenuesController < ApplicationController
+  before_filter :authorize, only: [:edit, :update, :new, :create, :destroy]
   # GET /venues
   # GET /venues.json
   def index
