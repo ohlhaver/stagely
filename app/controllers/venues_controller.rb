@@ -14,10 +14,21 @@ class VenuesController < ApplicationController
   # GET /venues/1
   # GET /venues/1.json
   def show
-    @venue = Venue.find(params[:id])
-    @events = @venue.events.all
 
-    @related_events = Event.search find_topics(@events), :match_mode => :any
+    @venue = Venue.find(params[:id])
+
+    if params[:time] == "week"
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..7.days.from_now, :venue_id => @venue.id}, :order => "date ASC" 
+    elsif params[:time] == "tomorrow"
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..Date.tomorrow.tomorrow, :venue_id => @venue.id}, :order => "date ASC" 
+    elsif params[:time] == "today"
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..Date.tomorrow, :venue_id => @venue.id}, :order => "date ASC" 
+    else
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..30.days.from_now, :venue_id => @venue.id}, :order => "date ASC" 
+      
+    end
+
+    @related_events = Event.search find_topics(@events), :match_mode => :any, :with => {:date => 1.hour.ago.utc..30.days.from_now}
 
     respond_to do |format|
       format.html # show.html.erb

@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
 	    indexes description, :sortable => true
 
 	    # attributes
-            has date
+            has date, venue_id
 	  
   	end
 

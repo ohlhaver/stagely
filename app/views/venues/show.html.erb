@@ -4,14 +4,36 @@
 
 <div class="span8">
 
-	<p>
 	<h3><%= @venue.name %></h3>
-	</p>
 
-	<p>
-	<%= @venue.street %><%= link_to image_tag("external-link.gif"),"http://maps.google.de/maps?q=#{@venue.street}+#{@venue.postal_code}" %> - <%= @venue.postal_code %> - <%= @venue.town %>
-	</p>
-
+	<%= @venue.street %> (<%= @venue.town %>)<%= link_to image_tag("external-link.gif"),"http://maps.google.de/maps?q=#{@venue.street}+#{@venue.postal_code}" %> - <%= @venue.postal_code %> Berlin
+<br> <br>
+<ul class="nav nav-tabs">
+<% if params[:time] == "today" %> 
+	     <li class="active"> 
+	     <%else%>
+	     <li>
+	     <%end%>
+	    <%= link_to "Today", :time => "today" %></li>
+	     <% if params[:time] == "tomorrow" %> 
+	     <li class="active"> 
+	     <%else%>
+	     <li>
+	     <%end%>
+	    <%= link_to "Tomorrow", :time => "tomorrow" %></li>
+	     <% if params[:time] == "week" %> 
+	     <li class="active"> 
+	     <%else%>
+	     <li>
+	     <%end%>
+	    <%= link_to "This week", :time => "week" %></li>
+	     <% if params[:time] == nil %> 
+	     <li class="active"> 
+	     <%else%>
+	     <li>
+	     <%end%>
+	    <%= link_to "This month",venue_path(@venue) %></li>
+	</ul>
 	<table class="table table-striped">
 	  <tbody>
 	    <%= render @events %>
