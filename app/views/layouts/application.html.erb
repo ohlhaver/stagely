@@ -9,11 +9,18 @@
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <meta name="description" content="Classical music concerts in Berlin"/>     
+    <meta name="keywords" content="Classical music, concerts, classical concerts, classic concerts, Berlin, stagely"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <header>
     <div id="logo">
-    <%= link_to "stage.ly", root_path%>
+      <%= link_to "stage.ly", root_path%>
+      <%if params[:action] == "index"%>
+        <div id="slogan">
+          Classical music in Berlin 
+        </div>  
+      <%end%>
     </div>
 
         
