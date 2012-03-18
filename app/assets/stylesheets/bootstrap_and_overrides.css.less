@@ -16,10 +16,38 @@
 // Example:
 // @linkColor: #ff0000;
 
+
+body {
+    background-color: #FFFFFF;
+    color: #333333;
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+	font-size: 11px;
+    line-height: 18px;
+    margin: 0;
+
+	a {
+	    color: #0088CC;
+	    text-decoration: none;
+	    font-weight: bold;
+	}
+	a:hover {
+	    color: #0088CC;
+	    text-decoration: underline;
+	    font-weight: bold;
+	}
+
+}
+
+input {
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+}
+
 .controls .text {
 	height: 55px;
-	width: 55%	
+	width: 55%;
 }
+
+
 
 .related_links {
 	margin-left: 5px;
@@ -41,28 +69,37 @@ h3 {
 }
 
 header {
+	
 
 	#logo {
+		
 		color: white;
 		background: darkred;
 		font-size: 40px;
+		font-family: "tahoma",tahoma,verdana,arial,sans-serif;
 		line-height: 70px;
 		text-align: center;
 		text-rendering: optimizelegibility;
 		margin-bottom: 10px;
 
+
+
 			a {
 		  color: white;
 		  text-decoration: none;
+		  font-weight: normal;
+		  
 
 		  &:hover {
 		    color: white;
 		    text-decoration: none;
+		    font-weight: normal;
 		  }
 
 		  &:visited {
 		    color: white;
 		    text-decoration: none;
+		    font-weight: normal;
 		  }
 	}
 
