@@ -42,6 +42,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     @related_events = Event.search @event.keywords, :match_mode => :any, :with => {:date => 1.hour.ago.utc..30.days.from_now}
+    @related_events.delete(@event)
 
     #Shortener::ShortenedUrl.generate(request.url)
     #@keywords = @event.keywords.split(/\s+/)
