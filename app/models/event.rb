@@ -6,13 +6,14 @@ class Event < ActiveRecord::Base
 	belongs_to :venue
 
 	before_save :generate_keywords
+        before_save :make_date_precise
 
 	define_index do
 	    # fields
 	    indexes description, :sortable => true
 
-	    
 	    # attributes
+            has date
 	  
   	end
 
@@ -21,6 +22,13 @@ class Event < ActiveRecord::Base
         end
 
   	private
+
+        def make_date_precise
+                date = (self.date.year.to_s + "-" + self.date.month.to_s + "-" + self.date.day.to_s + " " + self.time.to_s(:time))
+                self.date= date.to_time.localtime
+                self.time = self.date
+                
+        end
 
   	def generate_keywords
             text= self.description

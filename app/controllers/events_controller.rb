@@ -3,7 +3,17 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+
+    
+    if params[:time] == "week"
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..7.days.from_now} 
+    elsif params[:time] == "tomorrow"
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..Date.tomorrow.tomorrow}
+    elsif params[:time] == "month"
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..30.days.from_now}
+    else
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..Date.tomorrow}
+    end
 
     find_topics(@events)
 
@@ -14,7 +24,15 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = Event.search params[:q], :match_mode => :any
+    if params[:time] == "week"
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago.utc..7.days.from_now} 
+    elsif params[:time] == "tomorrow"
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago.utc..Date.tomorrow.tomorrow}
+    elsif params[:time] == "month"
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago.utc..30.days.from_now}
+    else
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago.utc..Date.tomorrow}
+    end
     find_topics(@events)
   end
 
@@ -94,23 +112,6 @@ class EventsController < ApplicationController
     end
   end
 
-  protected
-
-  def find_topics(events)
-    all_keywords =""
-      events.each do |e|
-        (all_keywords = all_keywords + e.keywords) 
-      end
-
-      all_keywords_array = all_keywords.split(/\s+/)
-      keywords_with_values = all_keywords_array.inject(Hash.new(0)) {|h,x| h[x]+=1;h}
-      ranked_array = keywords_with_values.sort_by { |key, value| -value }
-      words =[]
-      ranked_array.first(5).each do |f|
-        words = words.push(f[0])
-      end
-      @words=words
-  end
 
 
 

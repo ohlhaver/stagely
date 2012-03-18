@@ -1,4 +1,31 @@
 <div class="span8">
+	<ul class="nav nav-tabs">
+	     <% if params[:time] == nil %> 
+	     <li class="active"> 
+	     <%else%>
+	     <li>
+	     <%end%>
+	    	<a href="events_path">Today</a>
+	    </li>
+	     <% if params[:time] == "tomorrow" %> 
+	     <li class="active"> 
+	     <%else%>
+	     <li>
+	     <%end%>
+	    <a href="/?time=tomorrow">Tomorrow</a></li>
+	     <% if params[:time] == "week" %> 
+	     <li class="active"> 
+	     <%else%>
+	     <li>
+	     <%end%>
+	    <a href="/?time=week">This week</a></li>
+	     <% if params[:time] == "month" %> 
+	     <li class="active"> 
+	     <%else%>
+	     <li>
+	     <%end%>
+	    <a href="/?time=month">This month</a></li>
+	</ul>
 	<table class="table table-striped">
 	  <tbody>
 	<%= render @events %>
@@ -18,7 +45,7 @@
 		<table class="table table-striped">
 	  <tbody>
 			<% @words.each do |keyword| %>
-			<%= link_to keyword, :action => "search", :q => keyword %> <br><br>
+			<%= link_to keyword, :action => "search", :q => keyword, :time => params[:time] %> <br><br>
 			<%end%>
 	  </tbody>
 

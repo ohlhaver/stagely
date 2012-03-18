@@ -3,7 +3,6 @@
 
 	<h3><%= @event.description %></h3>
 	
-	
 	<%= @event.date.to_date.to_s(:short) %>, 
 	<%= @event.time.to_s(:time) %><br>
 	<%= render partial: "venues/venue_address"%>
