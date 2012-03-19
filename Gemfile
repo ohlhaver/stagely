@@ -56,3 +56,5 @@ gem 'magic_encoding'
 gem "shortener", "~> 0.1.1"
 
 gem "shoulda-matchers", "~> 1.0.0"
+
+gem "activeadmin"

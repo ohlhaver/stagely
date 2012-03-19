@@ -11,6 +11,9 @@ class Event < ActiveRecord::Base
 	define_index do
 	    # fields
 	    indexes description, :sortable => true
+            indexes venue(:name), :as => :venue
+            indexes venue.street, :as => :street
+            indexes venue.town, :as => :town
 
 	    # attributes
             has date, venue_id
