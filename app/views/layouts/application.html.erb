@@ -21,9 +21,7 @@
         <li class="offset5 span1">
           <div id ="logo"><%= link_to "stage.ly", root_path%> </div>
         </li>
-        <li class="offset2 span1">
-          <div id ="search"><%= render "layouts/search" %></div>
-        </li>
+
       </div>
     </div>
     </ul>
@@ -51,6 +49,9 @@
         </div>
       <% end %>
       <div class="row">
+                <div class="offset8 span1" style="margin-bottom:-18px">
+          <div id ="search"><%= render "layouts/search" %></div>
+        </div>
           <%= yield %>
         </div>
       </div>
