@@ -13,30 +13,33 @@
 	<br>
 		<div class ="tweetit">
 
-		 <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="<%=tweet_text(@event)%>" data-url="<%=shoort_url(request.url)%>" data-counturl="<%=shoort_url(request.url)%>" data-size="small" data-count = "none">Tweet</a>
+			 <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="<%=tweet_text(@event)%>" data-url="<%=shoort_url(request.url)%>" data-counturl="<%=shoort_url(request.url)%>" data-size="small" data-count = "none">Tweet</a>
 
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
-    </div>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
+    	</div>
 
 	    <div class ="fbbuttons">
 		<div class="fb-like" data-href="<%= request.url%>" data-send="true" data-layout="button_count" data-width="50" data-show-faces="true"></div>
-	</div>
+		</div>
+		<br>
+		<br>
 
 	
 
-	<div class="fb-comments" data-href="<%= request.url%>" data-num-posts="10" data-width="545"></div>
-	<% if current_user %>
-		<div class="form-actions">
+		<div class="fb-comments" data-href="<%= request.url%>" data-num-posts="10" data-width="545"></div>
 
-		  <%= link_to 'Back', events_path, :class => 'btn'  %>
-		  <%= link_to 'Edit', edit_event_path(@event), :class => 'btn' %>
-		  <%= link_to 'Delete', event_path(@event), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
-		</div>
-	<%end%>
+		<% if current_user %>
+			<div class="form-actions">
+
+			  <%= link_to 'Back', events_path, :class => 'btn'  %>
+			  <%= link_to 'Edit', edit_event_path(@event), :class => 'btn' %>
+			  <%= link_to 'Delete', event_path(@event), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+			</div>
+		<%end%>
 </div>
 
 <div class="span4">
-<%= render "layouts/search" %>
+
 	<% if @related_events != [] %>
 		<div class="related_links">
 		Related:

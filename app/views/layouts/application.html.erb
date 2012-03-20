@@ -14,20 +14,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <header>
-    <div id="logo">
-      <%= link_to "stage.ly", root_path%>
-      <%if params[:action] == "index"%>
-        <div id="slogan">
-          Classical music in Berlin 
-        </div>  
-      <%end%>
+  <ul class ="topbar">
+    <div class="container">
+      <div class="row">
+
+        <li class="offset2 span1">
+          <div id ="logo"><%= link_to "stage.ly", root_path%> </div>
+        </li>
+        <li class="offset5 span1">
+          <div id ="search"><%= render "layouts/search" %></div>
+        </li>
+      </div>
     </div>
+    </ul>
 
         
 
   </header>
 
   <body>
+
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -45,7 +51,6 @@
         </div>
       <% end %>
       <div class="row">
-          
           <%= yield %>
         </div>
       </div>
