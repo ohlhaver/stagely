@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 module EventsHelper
 
-
 	def add_new_venue
 		return link_to 'add new venue', new_venue_path
 	end

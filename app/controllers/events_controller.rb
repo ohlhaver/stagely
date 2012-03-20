@@ -35,6 +35,7 @@ class EventsController < ApplicationController
       @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago.utc..Date.tomorrow}
     end
     find_topics(@events)
+    @search_breadcrumb = params[:q]
   end
 
   # GET /events/1
@@ -44,6 +45,9 @@ class EventsController < ApplicationController
 
     @related_events = Event.search @event.keywords, :match_mode => :any, :with => {:date => 1.hour.ago.utc..30.days.from_now}
     @related_events.delete(@event)
+    #@time_breadcrumb = 
+    @town_breadcrumb = @event.venue.town
+    @time_breadcrumb = event_time
 
     #Shortener::ShortenedUrl.generate(request.url)
     #@keywords = @event.keywords.split(/\s+/)
@@ -114,6 +118,30 @@ class EventsController < ApplicationController
     end
   end
 
+
+  def event_time
+     if @event.date > 1.hour.ago.utc && @event.date < Date.tomorrow
+      return "Today"
+    elsif @event.date > Date.today && @event.date < Date.tomorrow.tomorrow
+      return "Tomorrow"
+    elsif @event.date > Date.tomorrow && @event.date < 7.days.from_now
+      return "This week"
+    elsif @event.date > 7.days.from_now && @event.date < 30.days.from_now
+      return "This month"
+    end
+  end
+
+  def filter_time
+    if params[:time] == "today"
+      return "Today"
+    elsif params[:time] == "tomorrow"
+      return "Tomorrow"
+    elsif params[:time] == "week"
+      return "This week"
+    elsif params[:time] == "month"
+      return "This month"
+    end
+  end
 
 
 

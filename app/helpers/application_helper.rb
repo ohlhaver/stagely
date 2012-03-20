@@ -10,6 +10,12 @@ module ApplicationHelper
 	    end
  	end
 
+ 	def get_breadcrumb_time(time_breadcrumb)
+ 		return nil if time_breadcrumb =="Today"
+ 		return "tomorrow" if time_breadcrumb =="Tomorrow"
+ 		return "week" if time_breadcrumb =="This week"
+ 		return "month" if time_breadcrumb =="This month"
+ 	end
 
 
 

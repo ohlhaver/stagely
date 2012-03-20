@@ -23,3 +23,42 @@
             Classical music in Berlin 
           </div>  
         <%end%>
+
+            <ul style="list-style-type:none">
+                  <li style="display:inline">
+                  <a href="#">Home</a> >
+                  </li>
+                  <li style="display:inline">
+                  <a href="#">Today</a> >
+                  <li style="display:inline">
+                  <a href="#">Mitte</a> >
+                  </ul>
+
+
+
+ <div class="span8">
+                  <ul class="breadcrumb" style="list-style-type:none">
+                  <li>
+                  <a href="/">Home</a> >
+                  </li>
+
+                  <li>
+                  <% if @time_breadcrumb %>
+                  <%= link_to @time_breadcrumb, :controller => "events", :action => "index", :time => get_breadcrumb_time(@time_breadcrumb) %> >
+                  </li>
+                  <%end%>
+                  <% if @town_breadcrumb %>
+                  <li>
+                  <%= link_to @town_breadcrumb, :controller => "events", :action => "search", :q => @town_breadcrumb, :time => get_breadcrumb_time(@time_breadcrumb) %>
+                  </li>
+                  <%end%>
+                  <% if @search_breadcrumb %>
+                  <li>
+                  <%= link_to @search_breadcrumb, :controller => "events", :action => "search", :q => @search_breadcrumb %>
+                  </li>
+                  <%end%>
+                  </ul>
+                  
+
+
+          </div>
