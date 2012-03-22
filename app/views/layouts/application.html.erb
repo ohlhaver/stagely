@@ -29,7 +29,7 @@
         
 <br>
 <% if current_user %>
-  <%= link_to "Sign out", logout_path %>
+  <%= current_user.name%> | <%= link_to "Sign out", logout_path %>
 <% else %>
     <%= link_to "Sign in with Facebook", "/auth/facebook" %>
 <% end %>
