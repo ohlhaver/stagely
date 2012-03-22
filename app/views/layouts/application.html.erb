@@ -31,9 +31,8 @@
 <% if current_user %>
   <%= current_user.name%> | <%= link_to "Sign out", logout_path %>
 <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-<% end %>
-<br>
+    <%= link_to 'Sign in with Facebook', "/auth/facebook" %>
+<% end %><br>
 <%= link_to 'Post a concert', new_event_path%>
 </div>
 </li>
@@ -110,6 +109,6 @@
   <div class ="footer">
 
 <br>
-  <%= link_to "(c) stage.ly", "http://www.youtube.com/watch?v=NisCkxU544c"%> 
+  <%= link_to "(c) stage.ly", venues_path%> 
   </div>
 </html>

@@ -1,13 +1,15 @@
-<p>
-<h3>Venues</h3>
-</p>
+<% provide :title, "Concert venues in Berlin" %>
+<div class="span8" style="margin-top:-45px">
+<div id ="event_details">
+<h3>Concert venues in Berlin</h3>
+</div>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Town</th>
       <th>Events</th>
-      <% if current_user %>
+      <% if current_user && current_user.uid == "568790501" %>
         <th>Actions</th>
       <%end%>
     </tr>
@@ -17,7 +19,7 @@
       <tr>
         <td><%= link_to venue.name, venue_path(venue) %></td>
         <td><%= venue.town %></td>
-        <td><%= venue.events.size %></td>
+        <td><%= venue.events.where("date > ?",Time.now).size %></td>
         <td>
         <% if current_user && current_user.uid == "568790501" %>
           <%= link_to 'Edit', edit_venue_path(venue), :class => 'btn btn-mini' %>
@@ -28,6 +30,7 @@
     <% end %>
   </tbody>
 </table>
-<% if current_user %>
+ <% if current_user && current_user.uid == "568790501" %>
 <%= link_to 'New', new_venue_path, :class => 'btn btn-primary' %>
 <%end%>
+</div>

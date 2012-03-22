@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Venue < ActiveRecord::Base
+	attr_accessible :name, :street, :postal_code
 	validates_presence_of :name, :street, :postal_code
 	validates_length_of :town, :maximum => 10
 

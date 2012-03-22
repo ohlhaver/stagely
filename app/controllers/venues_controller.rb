@@ -5,7 +5,8 @@ class VenuesController < ApplicationController
   # GET /venues
   # GET /venues.json
   def index
-    @venues = Venue.all
+    @venues = Venue.all(:order =>'name ASC')
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -34,6 +35,7 @@ class VenuesController < ApplicationController
     @events.each do |e|
       @related_events.delete(e)
     end
+    @town_breadcrumb = @venue.town
 
     respond_to do |format|
       format.html # show.html.erb
