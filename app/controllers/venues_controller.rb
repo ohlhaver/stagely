@@ -31,6 +31,9 @@ class VenuesController < ApplicationController
     end
 
     @related_events = Event.search find_topics(@events), :match_mode => :any, :with => {:date => 1.hour.ago.utc..30.days.from_now}
+    @events.each do |e|
+      @related_events.delete(e)
+    end
 
     respond_to do |format|
       format.html # show.html.erb
