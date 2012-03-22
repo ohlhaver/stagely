@@ -10,13 +10,15 @@ Stagely::Application.routes.draw do
 
   resources :users
   resources :sessions
-
   resources :venues
-
   resources :events
 
   match '/search',  to: 'events#search'
   match '/:id' => "shortener/shortened_urls#show"
+
+  match "/auth/:facebook/callback" => "sessions#create"
+  match "/auth/failure" => "events#index"
+  #match "/signout" => "sessions#destroy", :as => :signout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

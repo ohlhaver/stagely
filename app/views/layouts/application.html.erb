@@ -12,6 +12,7 @@
     <meta name="description" content="Classical music concerts in Berlin"/>     
     <meta name="keywords" content="Classical music, concerts, classical concerts, classic concerts, Berlin, stagely"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/eighth-notes.png" />
   </head>
   <header>
   <ul class ="topbar">
@@ -21,6 +22,21 @@
         <li class="offset5 span1">
           <div id ="logo"><%= link_to "stage.ly", root_path%> </div>
         </li>
+        
+        <li class="offset3 span3">
+        <div class ="top-nav">
+          
+        
+<br>
+<% if current_user %>
+  <%= link_to "Sign out", logout_path %>
+<% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+<% end %>
+<br>
+<%= link_to 'Post a concert', new_event_path%>
+</div>
+</li>
 
       </div>
     </div>
@@ -58,17 +74,22 @@
 
                     <li>
                     <% if @time_breadcrumb %>
-                     > <%= link_to @time_breadcrumb, :controller => "events", :action => "index", :time => get_breadcrumb_time(@time_breadcrumb) %> >
+                     > <%= link_to @time_breadcrumb, :controller => "events", :action => "index", :time => get_breadcrumb_time(@time_breadcrumb) %>
                     </li>
                     <%end%>
                     <% if @town_breadcrumb %>
                     <li>
-                    <%= link_to @town_breadcrumb, :controller => "events", :action => "search", :q => @town_breadcrumb, :time => get_breadcrumb_time(@time_breadcrumb) %>
+                    > <%= link_to @town_breadcrumb, :controller => "events", :action => "search", :q => @town_breadcrumb, :time => get_breadcrumb_time(@time_breadcrumb) %>
                     </li>
                     <%end%>
                     <% if @search_breadcrumb %>
                     <li>
                      > "<%= link_to @search_breadcrumb, :controller => "events", :action => "search", :q => @search_breadcrumb %>"
+                    </li>
+                    <%end%>
+                    <% if @action_breadcrumb %>
+                    <li>
+                     > <%= @action_breadcrumb %>
                     </li>
                     <%end%>
                     </ul>
@@ -83,11 +104,11 @@
 
   </body>
   <div class ="footer">
-  <% if current_user %>
-  Logged in as <%= current_user.email %>.
-  <%= link_to "log out", logout_path %> -
-  <%= link_to 'add an event', new_event_path%>
-<% end %>
+
+
+
+
+
 
 <br>
   <%= link_to "(c) stage.ly", "http://www.youtube.com/watch?v=NisCkxU544c"%> 

@@ -1,7 +1,5 @@
 <%= simple_form_for @venue, :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
-    <legend><%= controller.action_name.capitalize %> Venue</legend>
-
     <%= f.input :name %>
     <%= f.input :street %>
     <%= f.input :postal_code, :input_html => {:maxlength => 5 }%>

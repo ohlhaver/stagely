@@ -4,9 +4,12 @@ class Event < ActiveRecord::Base
 	validates_length_of :description, :maximum => 95
 	
 	belongs_to :venue
+        belongs_to :user
+
 
 	before_save :generate_keywords
         before_save :make_date_precise
+        #before_save :remove_stagely_as_author
 
 	define_index do
 	    # fields
@@ -222,6 +225,10 @@ class Event < ActiveRecord::Base
               self.keywords = keywords
 
 
+        end
+
+        def remove_stagely_as_author
+               self.user_id = nil if self.user.uid == "568790501"
         end
 
 

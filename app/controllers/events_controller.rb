@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class EventsController < ApplicationController
   before_filter :authorize, only: [:edit, :update, :new, :create, :destroy]
+  before_filter :correct_user, only: [:edit, :update, :destroy]
   # GET /events
   # GET /events.json
   def index
@@ -61,6 +62,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
+    @action_breadcrumb = "Post a concert"
     @event = Event.new
 
     respond_to do |format|
@@ -72,12 +74,13 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    @action_breadcrumb = "Edit event"
   end
 
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(params[:event])
+    @event = current_user.events.build(params[:event])
 
     respond_to do |format|
       if @event.save
@@ -141,6 +144,11 @@ class EventsController < ApplicationController
     elsif params[:time] == "month"
       return "This month"
     end
+  end
+
+  def correct_user
+    @event =Event.find(params[:id])
+    redirect_to root_url if current_user != @event.user
   end
 
 

@@ -4,7 +4,9 @@ class Venue < ActiveRecord::Base
 	validates_length_of :town, :maximum => 10
 
 	has_many :events
+	belongs_to :user
 	before_save :generate_town
+
 
 	 def to_param
                 "#{id}-#{self.name.gsub(/\W/, '-')}"
