@@ -3,17 +3,32 @@ class Venue < ActiveRecord::Base
 	attr_accessible :name, :street, :postal_code
 	validates_presence_of :name, :street, :postal_code
 	validates_length_of :town, :maximum => 10
+	validates_length_of :postal_code, :maximum => 5
+
 
 	has_many :events
 	belongs_to :user
-	before_save :generate_town
+	before_save :generate_town_ny
 
 
 	 def to_param
                 "#{id}-#{self.name.gsub(/\W/, '-')}"
      end
 
-	def generate_town
+     def generate_town_ny
+	    postal_code = self.postal_code.to_i
+
+	    borough ="Manhattan" if postal_code > 10000 && postal_code < 10300
+	    borough ="Staten Island" if postal_code > 10300 && postal_code < 10315
+	    borough ="Bronx" if postal_code > 10450 && postal_code < 10500
+	    borough ="Queens" if postal_code > 11000 && postal_code < 11200
+	    borough ="Brooklyn" if postal_code > 11200 && postal_code < 11300
+	    borough ="Queens" if postal_code > 11350 && postal_code < 12000
+
+       	self.town = borough unless borough == nil
+	end
+
+	def generate_town_berlin
 	    postal_code = self.postal_code
 
 	    h = {

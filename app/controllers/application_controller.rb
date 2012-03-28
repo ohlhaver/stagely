@@ -26,7 +26,14 @@ end
 helper_method :current_user
 
 def authorize
-  redirect_to "/auth/facebook" if current_user.nil?
+  if current_user.nil?
+    store_location
+    redirect_to "/auth/facebook" 
+  end
+end
+
+def store_location
+  session[:return_to] = request.fullpath
 end
 
 end

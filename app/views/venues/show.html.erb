@@ -7,7 +7,7 @@
 
 	<h3><%= @venue.name %></h3>
 
-	<%= @venue.street %> (<%= @venue.town %>)<%= link_to image_tag("external-link.gif"),"http://maps.google.de/maps?q=#{@venue.street}+#{@venue.postal_code}" %> - <%= @venue.postal_code %> Berlin
+	<%= @venue.street %><%= link_to image_tag("external-link.gif"),"http://maps.google.de/maps?q=#{@venue.street}+#{@venue.postal_code}" %> (<%= @venue.town %>)
 	<br><br>
 		<div class ="fbbuttons">
 			<div class="fb-like" data-href="<%= request.url%>" data-send="true" data-layout="button_count" data-width="50" data-show-faces="true"></div>
