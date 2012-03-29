@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class EventsController < ApplicationController
-  before_filter :authorize, only: [:edit, :update, :new, :create, :destroy]
+  before_filter :authorize, only: [:edit, :update, :new, :create, :destroy, :attend, :consider]
   before_filter :correct_user, only: [:edit, :update, :destroy]
   # GET /events
   # GET /events.json
@@ -150,6 +150,32 @@ class EventsController < ApplicationController
     @event =Event.find(params[:id])
     redirect_to root_url if current_user != @event.user
   end
+
+  def attend
+        event_id = params[:event_id]
+        event = Event.find(event_id)
+        event_url = params[:event_url]
+        type = params[:type]
+        
+        auth = session[:auth]
+        token = auth["credentials"]["token"]
+        me = FbGraph::User.me(token)
+        if type == "attend"
+          me.feed!(
+            :message => 'will attend "' + event.description + '" ' + event_url
+
+          )
+        else
+          me.feed!(
+            :message => 'considers attending "' + event.description + '" ' + event_url
+          )
+        end
+
+        redirect_to (event || root_url)
+  end
+
+  
+
 
 
 

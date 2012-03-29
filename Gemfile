@@ -61,3 +61,5 @@ gem "activeadmin"
 
 gem 'omniauth-facebook'
 
+gem 'fb_graph'
+

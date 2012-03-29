@@ -11,7 +11,13 @@ Stagely::Application.routes.draw do
   resources :users
   resources :sessions
   resources :venues
-  resources :events
+  resources :events do
+    member do
+      get :attend
+      get :consider
+    end
+  end
+
 
   match '/search',  to: 'events#search'
   match '/:id' => "shortener/shortened_urls#show"
