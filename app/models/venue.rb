@@ -2,7 +2,7 @@
 class Venue < ActiveRecord::Base
 	attr_accessible :name, :street, :postal_code
 	validates_presence_of :name, :street, :postal_code
-	validates_length_of :town, :maximum => 10
+	validates_length_of :town, :maximum => 9
 	validates_length_of :postal_code, :maximum => 5
 
 
@@ -19,7 +19,7 @@ class Venue < ActiveRecord::Base
 	    postal_code = self.postal_code.to_i
 
 	    borough ="Manhattan" if postal_code > 10000 && postal_code < 10300
-	    borough ="Staten Island" if postal_code > 10300 && postal_code < 10315
+	    borough ="St.Island" if postal_code > 10300 && postal_code < 10315
 	    borough ="Bronx" if postal_code > 10450 && postal_code < 10500
 	    borough ="Queens" if postal_code > 11000 && postal_code < 11200
 	    borough ="Brooklyn" if postal_code > 11200 && postal_code < 11300

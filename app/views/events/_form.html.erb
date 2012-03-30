@@ -1,7 +1,9 @@
+
 <%= simple_form_for @event, :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
     <%= f.association :venue, hint: add_new_venue %> 
-    <%= f.input :description, :input_html => {:maxlength => 95 }%>
+    <%= f.input :description, hint: character_count %>
+    
     <%= f.input :date, :as => :string %>
     <%= f.input :time, :prompt => {:minute => 'Minute', :hour => 'Hour'}, :minute_step => 15 %>
     <%= f.input :price, :input_html => { :maxlength => 15 }%>
@@ -11,3 +13,5 @@
     </div>
   </fieldset>
 <% end %>
+
+<script type="text/javascript"> var maxLen = 89; $(function() {   setCharCount($('#event_description')); }); $('#event_description').live('keyup keydown', function(e) { setCharCount($(this));  });  function setCharCount(object) {   var left = maxLen - object.val().length;  $('#char-count').html(left); }</script>
