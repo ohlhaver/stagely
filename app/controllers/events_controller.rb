@@ -8,13 +8,13 @@ class EventsController < ApplicationController
 
     
     if params[:time] == "week"
-      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..7.days.from_now} 
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..7.days.from_now} 
     elsif params[:time] == "tomorrow"
-      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..Date.tomorrow.tomorrow}
+      @events = Event.search :match_mode => :fullscan, :with => {:date => Date.tomorrow..Date.tomorrow.tomorrow}
     elsif params[:time] == "month"
-      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..30.days.from_now}
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..30.days.from_now}
     else
-      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..Date.tomorrow}
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..Date.tomorrow}
     end
 
     find_topics(@events)
@@ -27,13 +27,13 @@ class EventsController < ApplicationController
 
   def search
     if params[:time] == "week"
-      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago.utc..7.days.from_now} 
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..7.days.from_now} 
     elsif params[:time] == "tomorrow"
-      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago.utc..Date.tomorrow.tomorrow}
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => Date.tomorrow..Date.tomorrow.tomorrow}
     elsif params[:time] == "month"
-      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago.utc..30.days.from_now}
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now}
     else
-      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago.utc..Date.tomorrow}
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..Date.tomorrow}
     end
     find_topics(@events)
     @search_breadcrumb = params[:q]
@@ -44,7 +44,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
 
-    @related_events = Event.search @event.keywords, :match_mode => :any, :with => {:date => 1.hour.ago.utc..30.days.from_now}
+    @related_events = Event.search @event.keywords, :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now}
     @related_events.delete(@event)
     #@time_breadcrumb = 
     @town_breadcrumb = @event.venue.town
@@ -123,7 +123,7 @@ class EventsController < ApplicationController
 
 
   def event_time
-     if @event.date > 1.hour.ago.utc && @event.date < Date.tomorrow
+     if @event.date > 1.hour.ago && @event.date < Date.tomorrow
       return "Today"
     elsif @event.date > Date.today && @event.date < Date.tomorrow.tomorrow
       return "Tomorrow"

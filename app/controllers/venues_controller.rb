@@ -21,17 +21,17 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
 
     if params[:time] == "week"
-      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..7.days.from_now, :venue_id => @venue.id}, :order => "date ASC" 
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..7.days.from_now, :venue_id => @venue.id}, :order => "date ASC" 
     elsif params[:time] == "tomorrow"
-      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..Date.tomorrow.tomorrow, :venue_id => @venue.id}, :order => "date ASC" 
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..Date.tomorrow.tomorrow, :venue_id => @venue.id}, :order => "date ASC" 
     elsif params[:time] == "today"
-      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..Date.tomorrow, :venue_id => @venue.id}, :order => "date ASC" 
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..Date.tomorrow, :venue_id => @venue.id}, :order => "date ASC" 
     else
-      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago.utc..30.days.from_now, :venue_id => @venue.id}, :order => "date ASC" 
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..30.days.from_now, :venue_id => @venue.id}, :order => "date ASC" 
       
     end
 
-    @related_events = Event.search find_topics(@events), :match_mode => :any, :with => {:date => 1.hour.ago.utc..30.days.from_now}
+    @related_events = Event.search find_topics(@events), :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now}
     @events.each do |e|
       @related_events.delete(e)
     end
