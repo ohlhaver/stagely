@@ -32,8 +32,8 @@ class Event < ActiveRecord::Base
 
         def make_date_precise
                 date = (self.date.year.to_s + "-" + self.date.month.to_s + "-" + self.date.day.to_s + " " + self.time.to_s(:time))
-                self.date= date.to_time
-                self.time = self.date
+                self.date = Time.zone.parse(date)
+                #self.time = self.date
                 
         end
 
