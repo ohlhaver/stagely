@@ -10,11 +10,11 @@ class EventsController < ApplicationController
     if params[:time] == "week"
       @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..7.days.from_now} 
     elsif params[:time] == "tomorrow"
-      @events = Event.search :match_mode => :fullscan, :with => {:date => Date.tomorrow..Date.tomorrow.tomorrow}
+      @events = Event.search :match_mode => :fullscan, :with => {:date => Time.zone.parse(Date.tomorrow.to_s(:db))..Time.zone.parse(Date.tomorrow.tomorrow.to_s(:db))}
     elsif params[:time] == "month"
       @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..30.days.from_now}
     else
-      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..Date.tomorrow}
+      @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..Time.zone.parse(Date.tomorrow.to_s(:db))}
     end
 
     find_topics(@events)
@@ -29,11 +29,11 @@ class EventsController < ApplicationController
     if params[:time] == "week"
       @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..7.days.from_now} 
     elsif params[:time] == "tomorrow"
-      @events = Event.search params[:q], :match_mode => :any, :with => {:date => Date.tomorrow..Date.tomorrow.tomorrow}
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => Time.zone.parse(Date.tomorrow.to_s(:db))..Time.zone.parse(Date.tomorrow.tomorrow.to_s(:db))}
     elsif params[:time] == "month"
       @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now}
     else
-      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..Date.tomorrow}
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..Time.zone.parse(Date.tomorrow.to_s(:db))}
     end
     find_topics(@events)
     @search_breadcrumb = params[:q]
@@ -123,11 +123,11 @@ class EventsController < ApplicationController
 
 
   def event_time
-     if @event.date > 1.hour.ago && @event.date < Date.tomorrow
+     if @event.date > 1.hour.ago && @event.date < Time.zone.parse(Date.tomorrow.to_s(:db))
       return "Today"
-    elsif @event.date > Date.today && @event.date < Date.tomorrow.tomorrow
+    elsif @event.date > Time.zone.parse(Date.today.to_s(:db)) && @event.date < Time.zone.parse(Date.tomorrow.tomorrow.to_s(:db))
       return "Tomorrow"
-    elsif @event.date > Date.tomorrow && @event.date < 7.days.from_now
+    elsif @event.date > Time.zone.parse(Date.tomorrow.to_s(:db)) && @event.date < 7.days.from_now
       return "This week"
     elsif @event.date > 7.days.from_now && @event.date < 30.days.from_now
       return "This month"
