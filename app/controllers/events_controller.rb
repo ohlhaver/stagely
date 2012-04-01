@@ -51,7 +51,7 @@ class EventsController < ApplicationController
     @time_breadcrumb = event_time
 
     #Shortener::ShortenedUrl.generate(request.url)
-    #@keywords = @event.keywords.split(/\s+/)
+    @keywords = @event.keywords.split(/\s+/)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -43,6 +43,7 @@
 </div>
 
 <div class="span4">
+
 	<% if @related_events != [] %>
 		<div class="related_links">
 		Related:
@@ -54,6 +55,13 @@
 		  </tbody>
 		</table>
 	<%end%>
+	<div class="related_links">
+	Suggestions:
+		<% @keywords.each do |keyword| %>
+		<%= link_to keyword, :action => "search", :q => keyword %> 
+		<%end%>
+	</div>
+	<br>
 	<div class="related_links">
 		<%= link_to "all concerts »", root_path %>
 	</div>

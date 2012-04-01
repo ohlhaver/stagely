@@ -48,6 +48,8 @@ class Event < ActiveRecord::Base
 
             position = array.inject(Hash.new(0)) {|h,x| h[x]+=1;h}
             position.delete_if {|key, value| key == nil}
+            position.delete_if {|key, value| key.length < 4}
+
 
             keywords = (position.keys).join(' ')
                          
