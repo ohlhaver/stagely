@@ -58,7 +58,7 @@ class Event < ActiveRecord::Base
               if keywords != nil
                         
                 #keywords=keywords.sub('—',' ')
-                
+                keywords=keywords.sub(' ','')
                 keywords=keywords.sub(' jan ',' ')
                 keywords=keywords.sub(' feb ',' ')
                 keywords=keywords.sub(' mar ',' ')

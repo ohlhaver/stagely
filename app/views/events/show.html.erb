@@ -58,8 +58,11 @@
 	<div class="related_links">
 	Suggestions:
 		<% @keywords.each do |keyword| %>
-		<%= link_to keyword, :action => "search", :q => keyword %> 
-		<%end%>
+		 <%= link_to keyword, :action => "search", :q => keyword %>
+		 <% if keyword != @keywords.last %>
+		  ·
+		  <% end %>
+		<%end%> 
 	</div>
 	<br>
 	<div class="related_links">
