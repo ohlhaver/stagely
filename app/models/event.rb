@@ -27,7 +27,8 @@ class Event < ActiveRecord::Base
   	end
 
         def to_param
-                "#{id}-#{self.who.gsub(/\W/, '-')}: #{self.description.gsub(/\W/, '-')}" 
+                self.who = "" if self.who == nil
+                "#{id}-#{self.who.gsub(/\W/, '-')}: #{self.description.gsub(/\W/, '-')}"
         end
 
   	private
