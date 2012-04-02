@@ -1,8 +1,9 @@
 
 <%= simple_form_for @event, :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
-    <%= f.association :venue, hint: add_new_venue %> 
-    <%= f.input :description, hint: character_count %>
+    <%= f.association :venue, hint: add_new_venue %>
+    <%= f.input :who, :as => :text, hint: who_character_count %> 
+    <%= f.input :description, hint: description_character_count %>
     
     <%= f.input :date, :as => :string %>
     <%= f.input :time, :prompt => {:minute => 'Minute', :hour => 'Hour'}, :minute_step => 15 %>
@@ -14,4 +15,6 @@
   </fieldset>
 <% end %>
 
-<script type="text/javascript"> var maxLen = 90; $(function() {   setCharCount($('#event_description')); }); $('#event_description').live('keyup keydown', function(e) { setCharCount($(this));  });  function setCharCount(object) {   var left = maxLen - object.val().length;  $('#char-count').html(left); }</script>
+<script type="text/javascript"> var maxLen = 44; $(function() {   setCharCount($('#event_who')); }); $('#event_who').live('keyup keydown', function(e) { setCharCount($(this));  });  function setCharCount(object) {   var left = maxLen - object.val().length;  $('#who-char-count').html(left); }</script>
+
+<script type="text/javascript"> var maxLen = 44; $(function() {   setCharCount2($('#event_description')); }); $('#event_description').live('keyup keydown', function(e) { setCharCount2($(this));  });  function setCharCount2(object) {   var left = maxLen - object.val().length;  $('#description-char-count').html(left); }</script>

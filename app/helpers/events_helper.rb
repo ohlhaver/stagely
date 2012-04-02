@@ -15,15 +15,20 @@ module EventsHelper
 	end
 
 	def tweet_text(event)
-		"#{event.description}, #{event.date.strftime("%b %d")}, #{event.time.strftime("%I:%M %p")}, #{event.venue.town},"
+		"#{event.who}: #{event.description}, #{event.date.strftime("%b %d")}, #{event.time.strftime("%I:%M%p")}, #{event.venue.town},"
 	end
 
 	def author(event)
 			return link_to event.user.name, "https://www.facebook.com/#{event.user.uid}"
 	end
 
-	def character_count
-		render :partial => 'counter'
+	def who_character_count
+		render :partial => 'who_counter'
 	end
+
+	def description_character_count
+		render :partial => 'description_counter'
+	end
+
 
 end

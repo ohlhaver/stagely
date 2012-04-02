@@ -1,7 +1,7 @@
 <% provide :title, @event.description %>
 <div class="span8">
 	<div id ="event_details">
-		<h3><%= @event.description %></h3>
+		<h3><%= @event.who + ": " + @event.description %></h3>
 
 		<%= @event.date.strftime("%a, %b %d") %>, 
 		<%= @event.time.strftime("%I:%M %p") %><br>

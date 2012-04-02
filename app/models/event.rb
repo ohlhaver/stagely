@@ -1,8 +1,9 @@
 # -*- encoding : utf-8 -*-
 class Event < ActiveRecord::Base
-        attr_accessible :venue_id, :date, :time, :description, :price
-	validates_presence_of :description, :venue_id, :time, :date
-	validates_length_of :description, :maximum => 90
+        attr_accessible :venue_id, :date, :time, :description, :price, :who
+	validates_presence_of :description, :venue_id, :time, :date, :who
+	validates_length_of :description, :maximum => 44
+        validates_length_of :who, :maximum => 44
 	
 	belongs_to :venue
         belongs_to :user
@@ -15,6 +16,7 @@ class Event < ActiveRecord::Base
 	define_index do
 	    # fields
 	    indexes description, :sortable => true
+            indexes who, :sortable => true
             indexes venue(:name), :as => :venue
             indexes venue.street, :as => :street
             indexes venue.town, :as => :town
@@ -25,7 +27,7 @@ class Event < ActiveRecord::Base
   	end
 
         def to_param
-                "#{id}-#{self.description.gsub(/\W/, '-')}"
+                "#{id}-#{self.who.gsub(/\W/, '-')}: #{self.description.gsub(/\W/, '-')}" 
         end
 
   	private
@@ -38,7 +40,7 @@ class Event < ActiveRecord::Base
         end
 
   	def generate_keywords
-            text= self.description
+            text= self.who + ' ' + self.description
 
             text = text.gsub(/\W/, ' ')
 

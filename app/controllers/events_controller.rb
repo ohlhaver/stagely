@@ -162,12 +162,12 @@ class EventsController < ApplicationController
         me = FbGraph::User.me(token)
         if type == "attend"
           me.feed!(
-            :message => 'will attend "' + event.description + '" ' + event_url
+            :message => 'will attend "' + event.who + ': ' + event.description + '" ' + event_url
 
           )
         else
           me.feed!(
-            :message => 'considers attending "' + event.description + '" ' + event_url
+            :message => 'considers attending "' + event.who + ': ' + event.description + '" ' + event_url
           )
         end
 
