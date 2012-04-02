@@ -237,7 +237,5 @@ class Event < ActiveRecord::Base
                self.user_id = nil if self.user.uid == "568790501"
         end
 
-
-
         
 end
