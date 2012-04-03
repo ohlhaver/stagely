@@ -17,6 +17,7 @@ class EventsController < ApplicationController
       @events = Event.search :match_mode => :fullscan, :with => {:date => 1.hour.ago..Time.zone.parse(Date.tomorrow.to_s(:db))}
     end
 
+
     find_topics(@events)
 
     respond_to do |format|

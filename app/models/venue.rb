@@ -17,16 +17,39 @@ class Venue < ActiveRecord::Base
 
      def generate_town_ny
 	    postal_code = self.postal_code.to_i
-
 	    borough ="Manhattan" if postal_code > 10000 && postal_code < 10300
+	    borough ="Ws.Heights" if postal_code == 10031 or postal_code == 10032 or postal_code == 10033 or postal_code == 10034 or postal_code == 10040
+	    borough ="C.Harlem" if postal_code == 10026 or postal_code == 10030 or postal_code == 10037 or postal_code == 10039
+	    borough ="Chelsea" if postal_code == 10001 or postal_code == 10011 
+	    borough ="Ms.Heights" if postal_code == 10027
+	    borough ="Midtown" if postal_code == 10020
+	    borough ="W.Village" if postal_code == 10014
+	    borough ="MurrayHill" if postal_code == 10016
+	    borough ="R.Island" if postal_code == 10044
+	    borough ="Gramercy" if postal_code == 10010
+	    borough ="E.Village" if postal_code == 10009
+	    borough ="L.EastSide" if postal_code == 10002
+	    borough ="NoHo" if postal_code == 10003
+	    borough ="SoHo" if postal_code == 10012
+	    borough ="Tribeca" if postal_code == 10013
+	    borough ="Midtown E." if postal_code == 10022 or postal_code == 10017 
+	    borough ="U.Westside" if postal_code == 10025 or postal_code == 10024 or postal_code == 10023
+	    borough ="U.Eastside" if postal_code == 10021 or postal_code == 10028 or postal_code == 10128
+	    borough ="Midtown W." if postal_code == 10019 or postal_code == 10036 or postal_code == 10018
+	    borough ="E.Harlem" if postal_code == 10029 or postal_code == 10035
+	    borough ="Lower Man." if postal_code == 10004 or postal_code == 10005 or postal_code == 10006 or postal_code == 10007 or postal_code == 10038 or postal_code == 10280
 	    borough ="St.Island" if postal_code > 10300 && postal_code < 10315
 	    borough ="Bronx" if postal_code > 10450 && postal_code < 10500
 	    borough ="Queens" if postal_code > 11000 && postal_code < 11200
 	    borough ="Brooklyn" if postal_code > 11200 && postal_code < 11300
+	    borough ="Greenpoint" if postal_code == 11222
+	    borough ="Williamsb." if postal_code == 11211 or postal_code == 11206
+	    borough ="Bushwick" if postal_code == 11237 or postal_code == 11221
 	    borough ="Queens" if postal_code > 11350 && postal_code < 12000
 
        	self.town = borough unless borough == nil
 	end
+
 
 	def generate_town_berlin
 	    postal_code = self.postal_code
