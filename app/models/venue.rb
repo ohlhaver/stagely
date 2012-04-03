@@ -21,7 +21,7 @@ class Venue < ActiveRecord::Base
 	    borough ="Ws.Heights" if postal_code == 10031 or postal_code == 10032 or postal_code == 10033 or postal_code == 10034 or postal_code == 10040
 	    borough ="C.Harlem" if postal_code == 10026 or postal_code == 10030 or postal_code == 10037 or postal_code == 10039
 	    borough ="Chelsea" if postal_code == 10001 or postal_code == 10011 
-	    borough ="Mn.Heights" if postal_code == 10027
+	    borough ="Ms.Heights" if postal_code == 10027
 	    borough ="Midtown" if postal_code == 10020
 	    borough ="W.Village" if postal_code == 10014
 	    borough ="MurrayHill" if postal_code == 10016
