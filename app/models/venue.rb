@@ -21,20 +21,20 @@ class Venue < ActiveRecord::Base
 	    borough ="Ws.Heights" if postal_code == 10031 or postal_code == 10032 or postal_code == 10033 or postal_code == 10034 or postal_code == 10040
 	    borough ="C.Harlem" if postal_code == 10026 or postal_code == 10030 or postal_code == 10037 or postal_code == 10039
 	    borough ="Chelsea" if postal_code == 10001 or postal_code == 10011 
-	    borough ="Ms.Heights" if postal_code == 10027
+	    borough ="Mn.Heights" if postal_code == 10027
 	    borough ="Midtown" if postal_code == 10020
 	    borough ="W.Village" if postal_code == 10014
 	    borough ="MurrayHill" if postal_code == 10016
 	    borough ="R.Island" if postal_code == 10044
 	    borough ="Gramercy" if postal_code == 10010
 	    borough ="E.Village" if postal_code == 10009
-	    borough ="L.EastSide" if postal_code == 10002
+	    borough ="Lower East" if postal_code == 10002
 	    borough ="NoHo" if postal_code == 10003
 	    borough ="SoHo" if postal_code == 10012
 	    borough ="Tribeca" if postal_code == 10013
 	    borough ="Midtown E." if postal_code == 10022 or postal_code == 10017 
-	    borough ="U.Westside" if postal_code == 10025 or postal_code == 10024 or postal_code == 10023
-	    borough ="U.Eastside" if postal_code == 10021 or postal_code == 10028 or postal_code == 10128
+	    borough ="Upper West" if postal_code == 10025 or postal_code == 10024 or postal_code == 10023
+	    borough ="Upper East" if postal_code == 10021 or postal_code == 10028 or postal_code == 10128
 	    borough ="Midtown W." if postal_code == 10019 or postal_code == 10036 or postal_code == 10018
 	    borough ="E.Harlem" if postal_code == 10029 or postal_code == 10035
 	    borough ="Lower Man." if postal_code == 10004 or postal_code == 10005 or postal_code == 10006 or postal_code == 10007 or postal_code == 10038 or postal_code == 10280
