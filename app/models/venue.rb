@@ -2,7 +2,7 @@
 class Venue < ActiveRecord::Base
 	attr_accessible :name, :street, :postal_code
 	validates_presence_of :name, :street, :postal_code
-	validates_length_of :town, :maximum => 9
+	validates_length_of :town, :maximum => 10
 	validates_length_of :postal_code, :maximum => 5
 
 
