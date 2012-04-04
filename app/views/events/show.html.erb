@@ -2,9 +2,9 @@
 <div class="span8">
 	<div id ="event_details">
 		<h3><%= @event.who + ": " + @event.description %></h3>
-
-		<%= @event.date.strftime("%a, %b %d") %>, 
-		<%= @event.time.strftime("%I:%M %p") %><br>
+		<%= @event.time.strftime("%I:%M %p") %>,
+		<%= @event.date.strftime("%a, %b %d") %>
+		<br>
 		<%= render partial: "venues/venue_address"%>
 		<br>
 		<% if @event.price? %>

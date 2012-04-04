@@ -1,3 +1,3 @@
 <tr>
-        <td><%= link_to (event.who + ": "+ event.description), event_path(event) %> - <%= event.date.strftime("%a, %b %d") %>, <%= event.time.strftime("%I:%M %p") %> - <%= event.venue.town %> </td>
+        <td><%= link_to (event.who + ": "+ event.description), event_path(event) %> - <%= event.time.strftime("%I:%M %p") %>, <%= event.date.strftime("%a, %b %d") %> - <%= event.venue.town %> </td>
 </tr>
