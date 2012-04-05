@@ -8,17 +8,18 @@
 	<h3><%= @venue.name %></h3>
 
 	<%= @venue.street %><%= link_to image_tag("external-link.gif"),"http://maps.google.de/maps?q=#{@venue.street}+#{@venue.postal_code}" %> (<%= @venue.town %>)
-	<br><br>
-		<div class ="fbbuttons">
-			<div class="fb-like" data-href="<%= request.url%>" data-send="true" data-layout="button_count" data-width="50" data-show-faces="true"></div>
-		</div>
-		<div class ="tweetit">
+	
+			<div class ="tweetit">
 			 <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="<%=vtweet_text(@venue)%>" data-url="<%=shoort_url(request.url)%>" data-counturl="<%=shoort_url(request.url)%>" data-size="small" data-count = "none">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
 		</div>
+		<div class ="fbbuttons">
+			<div class="fb-like" data-href="<%= request.url%>" data-send="true" data-layout="button_count" data-width="50" data-show-faces="true"></div>
+		</div>
+
 
 </div>
-<br> <br>
+<br>
 <ul class="nav nav-tabs">
 <% if params[:time] == "today" %> 
 	     <li class="active"> 
