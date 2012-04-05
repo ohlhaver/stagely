@@ -1,0 +1,24 @@
+<% provide :title, @event.description %>
+<div class="span8">
+	<div id ="event_details">
+		<h3><%= @event.name%></h3>
+		
+		<%= @event.start_time.strftime("%I:%M %p, %a, %b %d") %>
+
+		<br><br>
+		<%= @event.location %>
+		<br><br>
+		<%= @event.description %>
+
+		<br>
+		
+		
+		<div class="fb-comments" data-href="<%= request.url%>" data-num-posts="10" data-width="545"></div>
+		
+</div>
+
+
+
+
+
+
