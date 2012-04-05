@@ -1,12 +1,11 @@
 
 <%= simple_form_for @event, :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
-    <%= f.association :venue, hint: add_new_venue %>
-    <%= f.input :who, :as => :text, hint: who_character_count %> 
-    <%= f.input :description, hint: description_character_count %>
-    
+    <%= f.association :venue, hint: add_new_venue, :prompt => "select venue" %>
     <%= f.input :date, :as => :string %>
-    <%= f.input :time, :prompt => {:minute => 'Minute', :hour => 'Hour'}, :minute_step => 15 %>
+    <%= f.input :time, :prompt => {:minute => 'Minute', :hour => 'Hour'}, :minute_step => 15, label: "Start time" %>
+    <%= f.input :who, :as => :text, hint: who_character_count, label: "Performer/Band" %> 
+    <%= f.input :description, hint: description_character_count, label: "Work/Composer" %>
     <%= f.input :price, :input_html => { :maxlength => 15 }%>
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
