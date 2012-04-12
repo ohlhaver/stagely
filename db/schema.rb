@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402210105) do
+ActiveRecord::Schema.define(:version => 20120411010405) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(:version => 20120402210105) do
     t.string   "keywords"
     t.integer  "user_id"
     t.string   "who"
+    t.integer  "topic_id"
+    t.integer  "type_id"
   end
 
   create_table "shortened_urls", :force => true do |t|
@@ -72,6 +74,18 @@ ActiveRecord::Schema.define(:version => 20120402210105) do
   add_index "shortened_urls", ["owner_id", "owner_type"], :name => "index_shortened_urls_on_owner_id_and_owner_type"
   add_index "shortened_urls", ["unique_key"], :name => "index_shortened_urls_on_unique_key", :unique => true
   add_index "shortened_urls", ["url"], :name => "index_shortened_urls_on_url"
+
+  create_table "topics", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"

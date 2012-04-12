@@ -1,4 +1,4 @@
-<% provide :title, "Classical music in New York" %>
+<% provide :title, "Lectures, talks, readings, discussions and speeches in New York City" %>
 <div class="span8" style="margin-top:-59px">
 	<ul class="nav nav-tabs">
 	     <% if params[:time] == nil %> 
@@ -43,7 +43,7 @@
 		<table class="table table-striped">
 	  <tbody>
 			<% @words.each do |keyword| %>
-			<%= link_to keyword, :action => "search", :q => keyword, :time => params[:time] %> <br><br>
+			<%= link_to keyword[0] + " (" + keyword[1].to_s + ")", :action => "search", :q => keyword[0], :time => params[:time] %> <br><br>
 			<%end%>
 	  </tbody>
 

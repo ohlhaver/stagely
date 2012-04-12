@@ -62,3 +62,33 @@
 
 
           </div>
+
+
+
+            <div class="related_links">
+      Suggestions:
+            <% @keywords.each do |keyword| %>
+             <%= link_to keyword, :action => "search", :q => keyword %>
+             <% if keyword != @keywords.last %>
+              ·
+              <% end %>
+            <%end%> 
+      </div>
+
+                          <li>
+                    <% if @time_breadcrumb %>
+                     > <%= link_to @time_breadcrumb, :controller => "events", :action => "index", :time => get_breadcrumb_time(@time_breadcrumb) %>
+                    </li>
+                    <%end%>
+                    <% if @town_breadcrumb %>
+                    <li>
+                    > <%= link_to @town_breadcrumb, :controller => "events", :action => "search", :q => @town_breadcrumb, :time => get_breadcrumb_time(@time_breadcrumb) %>
+                    </li>
+                    <%end%>
+
+
+                                        <li>
+                    <% if @time_breadcrumb %>
+                     > <%= link_to @time_breadcrumb, :controller => "events", :action => "index", :time => get_breadcrumb_time(@time_breadcrumb) %>
+                    </li>
+                    <%end%>

@@ -31,7 +31,7 @@ class VenuesController < ApplicationController
       
     end
 
-    @related_events = Event.search find_topics(@events), :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now}
+    @related_events = Event.search find_topics(@events), :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now} unless @events == nil
     @events.each do |e|
       @related_events.delete(e)
     end
@@ -107,8 +107,5 @@ class VenuesController < ApplicationController
     end
   end
 
-  def power_user
-    @venue =Venue.find(params[:id])
-    redirect_to root_url if current_user.uid != "568790501"
-  end
+
 end

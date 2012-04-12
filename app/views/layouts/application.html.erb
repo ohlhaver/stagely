@@ -9,8 +9,8 @@
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-    <meta name="description" content="Classical music concerts in New York City"/>     
-    <meta name="keywords" content="Classical music, concerts, classical concerts, classic concerts, New York City, stagely"/>
+    <meta name="description" content="Lectures, talks, readings, discussions and speeches in New York City"/>     
+    <meta name="keywords" content="lectures, talks, discussions, speeches, readings, New York City, stagely"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/eighth-notes.png" />
     <script type="text/javascript">
@@ -46,7 +46,7 @@
 <% else %>
     <%= link_to 'Sign in with Facebook', "/auth/facebook" %>
 <% end %><br>
-<h4><%= link_to 'Post a concert', new_event_path%></h4>
+<h4><%= link_to 'Post an event', new_event_path%></h4>
 </div>
 </li>
 
@@ -84,17 +84,14 @@
                     <li>
                     <a href="/">Home</a>
                     </li>
+                    <% if @topic_breadcrumb %>
+                    <li>
+                     > <%= link_to @topic_breadcrumb, :controller => "events", :action => "search", :q => @topic_breadcrumb %>
+                    </li>
+                    <%end%>
 
-                    <li>
-                    <% if @time_breadcrumb %>
-                     > <%= link_to @time_breadcrumb, :controller => "events", :action => "index", :time => get_breadcrumb_time(@time_breadcrumb) %>
-                    </li>
-                    <%end%>
-                    <% if @town_breadcrumb %>
-                    <li>
-                    > <%= link_to @town_breadcrumb, :controller => "events", :action => "search", :q => @town_breadcrumb, :time => get_breadcrumb_time(@time_breadcrumb) %>
-                    </li>
-                    <%end%>
+
+
                     <% if @search_breadcrumb %>
                     <li>
                      > "<%= link_to @search_breadcrumb, :controller => "events", :action => "search", :q => @search_breadcrumb %>"

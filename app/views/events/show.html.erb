@@ -1,7 +1,7 @@
-<% provide :title, @event.description %>
+<% provide :title, @event.who + ": " + @event.type.name %>
 <div class="span8">
 	<div id ="event_details">
-		<h3><%= @event.who + ": " + @event.description %></h3>
+		<h3><%= @event.who + ": " + @event.type.name %></h3>
 		<%= @event.time.strftime("%I:%M %p") %>,
 		<%= @event.date.strftime("%a, %b %d") %>
 		<br>
@@ -59,18 +59,10 @@
 		  </tbody>
 		</table>
 	<%end%>
-	<div class="related_links">
-	Suggestions:
-		<% @keywords.each do |keyword| %>
-		 <%= link_to keyword, :action => "search", :q => keyword %>
-		 <% if keyword != @keywords.last %>
-		  ·
-		  <% end %>
-		<%end%> 
-	</div>
+
 	<br>
 	<div class="related_links">
-		<%= link_to "all concerts »", root_path %>
+		<%= link_to "all events »", root_path %>
 	</div>
 </div>
 

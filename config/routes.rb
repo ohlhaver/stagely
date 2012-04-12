@@ -1,5 +1,9 @@
 # -*- encoding : utf-8 -*-
 Stagely::Application.routes.draw do
+  resources :types
+
+  resources :topics
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

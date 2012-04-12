@@ -45,14 +45,15 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
 
-    @related_events = Event.search @event.keywords, :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now}, :limit => 9
+    @related_events = Event.search @event.topic.name, :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now}, :limit => 9
     @related_events.delete(@event)
     #@time_breadcrumb = 
     @town_breadcrumb = @event.venue.town
     @time_breadcrumb = event_time
+    @topic_breadcrumb = @event.topic.name
 
     #Shortener::ShortenedUrl.generate(request.url)
-    @keywords = @event.keywords.split(/\s+/)
+    #@keywords = @event.keywords.split(/\s+/)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -163,12 +164,12 @@ class EventsController < ApplicationController
         me = FbGraph::User.me(token)
         if type == "attend"
           me.feed!(
-            :message => 'will attend "' + event.who + ': ' + event.description + '" ' + event_url
+            :message => 'will attend "' + event.who + ': ' + event.type.name + '" ' + event_url
 
           )
         else
           me.feed!(
-            :message => 'considers attending "' + event.who + ': ' + event.description + '" ' + event_url
+            :message => 'considers attending "' + event.who + ': ' + event.type.name + '" ' + event_url
           )
         end
 

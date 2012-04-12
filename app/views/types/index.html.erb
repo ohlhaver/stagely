@@ -1,0 +1,30 @@
+<div class="span8">
+<div id ="event_details">
+<h3>Types</h3>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @types.each do |type| %>
+      <tr>
+        <td><%= type.id %></td>
+        <td><%= link_to type.name, type_path(type) %></td>
+        <td><%= type.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_type_path(type), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', type_path(type), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_type_path, :class => 'btn btn-primary' %>
+</div>
