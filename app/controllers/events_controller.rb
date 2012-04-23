@@ -48,7 +48,7 @@ class EventsController < ApplicationController
     @related_events = Event.search @event.topic.name, :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now}, :limit => 9
     @related_events.delete(@event)
     #@time_breadcrumb = 
-    @town_breadcrumb = @event.venue.town
+    #@town_breadcrumb = @event.venue.town
     @time_breadcrumb = event_time
     @topic_breadcrumb = @event.topic.name
 

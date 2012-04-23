@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     def find_topics(events)
     all_keywords =""
       events.each do |e|
-        (all_keywords = all_keywords + " " + e.topic.name) unless e==nil
+        (all_keywords = all_keywords + " " + e.topic.name) unless e.topic == nil
       end
 
       all_keywords_array = all_keywords.split(/\s+/)
