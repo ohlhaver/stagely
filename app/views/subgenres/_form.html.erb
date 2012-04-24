@@ -1,0 +1,17 @@
+
+
+<legend><%= controller.action_name.capitalize %> Subgenre</legend>
+<%= simple_form_for @subgenre, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+
+
+        <%= f.input :name %>
+        <%= f.association :genre %>
+
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', subgenres_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

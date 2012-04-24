@@ -5,6 +5,10 @@ module EventsHelper
 		return link_to 'add new venue', new_venue_path
 	end
 
+	def add_new_artist
+		return link_to 'add new artist/band', new_artist_path
+	end
+
 	def submit_price
 		return link_to_function "enter price", "$('#price_input, .icon').toggle('price_input')"
 	end
@@ -15,7 +19,7 @@ module EventsHelper
 	end
 
 	def tweet_text(event)
-		"#{event.who}: #{event.type.name}, #{event.date.strftime("%b%d")}, #{event.time.strftime("%I:%M%p")}, #{event.venue.town},"
+		"#{event.artist.name}, #{event.date.strftime("%b%d")}, #{event.time.strftime("%I:%M%p")}, #{event.venue.town},"
 	end
 
 	def author(event)

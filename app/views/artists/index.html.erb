@@ -1,0 +1,31 @@
+<div class="span8">
+<div id ="event_details">
+<h3>Bands & artists performing in New York City</h3>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr>
+        <td><%= artist.id %></td>
+        <td><%= link_to artist.name, artist_path(artist) %></td>
+        <td><%= artist.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_artist_path(artist), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', artist_path(artist), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_artist_path, :class => 'btn btn-primary' %>
+</div>
+ 

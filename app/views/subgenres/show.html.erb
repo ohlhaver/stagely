@@ -1,0 +1,13 @@
+<div class="span8">
+<div id ="event_details">
+<h3><%= (link_to @subgenre.genre.name, genre_path(@subgenre.genre)) %> > <%= @subgenre.name %></h3>
+</div>
+
+
+
+<div class="form-actions">
+  <%= link_to 'Back', subgenres_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_subgenre_path(@subgenre), :class => 'btn' %>
+  <%= link_to 'Delete', subgenre_path(@subgenre), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
+</div>

@@ -1,7 +1,7 @@
-<% provide :title, @event.who + ": " + @event.type.name %>
+<% provide :title, @event.artist.name %>
 <div class="span8">
 	<div id ="event_details">
-		<h3><%= @event.who + ": " + @event.type.name %></h3>
+		<h3><%= link_to @event.artist.name, artist_path(@event.artist) %></h3>
 		<%= @event.time.strftime("%I:%M %p") %>,
 		<%= @event.date.strftime("%a, %b %d") %>
 		<br>

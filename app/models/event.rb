@@ -1,14 +1,13 @@
 # -*- encoding : utf-8 -*-
 class Event < ActiveRecord::Base
-        attr_accessible :venue_id, :date, :time, :price, :who, :topic_id, :type_id
-	validates_presence_of :venue_id, :time, :date, :who, :topic_id, :type_id
+        attr_accessible :venue_id, :date, :time, :price, :who, :topic_id, :type_id, :artist_id
+	validates_presence_of :artist_id, :venue_id, :time, :date
 	validates_length_of :description, :maximum => 44
         validates_length_of :who, :maximum => 44
 	
+        belongs_to :artist
 	belongs_to :venue
         belongs_to :user
-        belongs_to :topic
-        belongs_to :type
 
 
 	#before_save :generate_keywords
@@ -19,8 +18,8 @@ class Event < ActiveRecord::Base
 	    # fields
 	    #indexes description, :sortable => true
             indexes who, :sortable => true
-            indexes type(:name), :as => :type
-            indexes topic(:name), :as => :topic
+            indexes subgenre(:name), :as => :subgenre
+            indexes genre(:name), :as => :genre
             indexes venue(:name), :as => :venue
             indexes venue.street, :as => :street
             indexes venue.town, :as => :town
@@ -32,7 +31,7 @@ class Event < ActiveRecord::Base
 
         def to_param
                 self.who = "" if self.who == nil
-                "#{id}-#{self.who.gsub(/\W/, '-')}: #{self.type.name.gsub(/\W/, '-')}"
+                "#{id}-#{self.who}"
         end
 
   	private

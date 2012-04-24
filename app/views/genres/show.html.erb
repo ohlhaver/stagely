@@ -1,0 +1,33 @@
+<div class="span8">
+<div id ="event_details">
+<h3><%= @genre.name %></h3>
+</div>
+
+<div class="form-actions">
+  <%= link_to 'Back', genres_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_genre_path(@genre), :class => 'btn' %>
+  <%= link_to 'Delete', genre_path(@genre), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
+<div id ="event_details">
+<h3>Subgenres</h3>
+</div>
+<table class="table table-striped">
+<tbody>
+    <% @genre.subgenres.each do |subgenre| %>
+      <tr>
+        <td><%= subgenre.id %></td>
+        <td><%= link_to subgenre.name, subgenre_path(subgenre) %></td>
+        <td><%= subgenre.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_subgenre_path(subgenre), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', subgenre_path(subgenre), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+<%= link_to 'New subgenre', new_subgenre_path, :class => 'btn btn-primary' %>
+</div>
+ 
+ 

@@ -84,9 +84,15 @@
                     <li>
                     <a href="/">Home</a>
                     </li>
-                    <% if @topic_breadcrumb %>
+        
+                    <% if @genre_breadcrumb %>
                     <li>
-                     > <%= link_to @topic_breadcrumb, :controller => "events", :action => "search", :q => @topic_breadcrumb %>
+                     > <%= link_to @genre_breadcrumb, :controller => "events", :action => "search", :q => @genre_breadcrumb %>
+                    </li>
+                    <%end%>
+                    <% if @subgenre_breadcrumb %>
+                    <li>
+                     > <%= link_to @subgenre_breadcrumb, :controller => "events", :action => "search", :q => @subgenre_breadcrumb %>
                     </li>
                     <%end%>
 

@@ -92,3 +92,7 @@
                      > <%= link_to @time_breadcrumb, :controller => "events", :action => "index", :time => get_breadcrumb_time(@time_breadcrumb) %>
                     </li>
                     <%end%>
+
+<script type="text/javascript"> var maxLen = 44; $(function() {   setCharCount($('#event_who')); }); $('#event_who').live('keyup keydown', function(e) { setCharCount($(this));  });  function setCharCount(object) {   var left = maxLen - object.val().length;  $('#who-char-count').html(left); }</script>
+
+<script type="text/javascript"> var maxLen = 44; $(function() {   setCharCount2($('#event_description')); }); $('#event_description').live('keyup keydown', function(e) { setCharCount2($(this));  });  function setCharCount2(object) {   var left = maxLen - object.val().length;  $('#description-char-count').html(left); }</script>

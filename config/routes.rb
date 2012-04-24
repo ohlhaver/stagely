@@ -1,8 +1,9 @@
 # -*- encoding : utf-8 -*-
 Stagely::Application.routes.draw do
-  resources :types
+  resources :artists
 
-  resources :topics
+  resources :genres
+  resources :subgenres
 
   ActiveAdmin.routes(self)
 
