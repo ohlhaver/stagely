@@ -17,15 +17,17 @@ class Event < ActiveRecord::Base
 	define_index do
 	    # fields
 	    #indexes description, :sortable => true
-            indexes who, :sortable => true
-            indexes subgenre(:name), :as => :subgenre
-            indexes genre(:name), :as => :genre
+            indexes artist(:name), :as => :artist
+            indexes artist.subgenre.name, :as => :subgenre
+            indexes artist.subgenre.genre.name, :as => :genre
+            #indexes artist(:subgenre), :as => :subgenre
+            #indexes genre(:name), :as => :genre
             indexes venue(:name), :as => :venue
             indexes venue.street, :as => :street
             indexes venue.town, :as => :town
 
 	    # attributes
-            has date, venue_id
+            has date, venue_id, artist_id
 	  
   	end
 
