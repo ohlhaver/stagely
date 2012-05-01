@@ -9,8 +9,8 @@
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-    <meta name="description" content="Lectures, talks, readings, discussions and speeches in New York City"/>     
-    <meta name="keywords" content="lectures, talks, discussions, speeches, readings, New York City, stagely"/>
+    <meta name="description" content="Concerts in New York City"/>     
+    <meta name="keywords" content="Concerts, venues, bands, New York City, stagely"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/eighth-notes.png" />
     <script type="text/javascript">
@@ -46,7 +46,7 @@
 <% else %>
     <%= link_to 'Sign in with Facebook', "/auth/facebook" %>
 <% end %><br>
-<h4><%= link_to 'Post an event', new_event_path%></h4>
+<h4><%= link_to 'Post a concert', new_event_path%></h4>
 </div>
 </li>
 
@@ -125,6 +125,7 @@
   <div class ="footer">
 
 <br>
-  <%= link_to "(c) stage.ly", venues_path%> 
+  <%= link_to "(c) ", artists_path%> 
+  <%= link_to "stage.ly", venues_path%> 
   </div>
 </html>

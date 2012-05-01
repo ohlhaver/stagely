@@ -1,13 +1,13 @@
-<% provide :title, params[:q] %>
+<% provide :title, params[:q] + " in New York City" %>
 <div class="span8">
 
 	<ul class="nav nav-tabs">
-	     <% if params[:time] == nil %> 
+	     <% if params[:time] == "today" %> 
 	     <li class="active"> 
 	     <%else%>
 	     <li>
 	     <%end%>
-	     <%= link_to "Today", :action => "search", :q => params[:q] %> 	
+	     <%= link_to "Today", :action => "search", :q => params[:q], :time => "today" %> 	
 	    </li>
 	     <% if params[:time] == "tomorrow" %> 
 	     <li class="active"> 
@@ -21,7 +21,7 @@
 	     <li>
 	     <%end%>
 	    <%= link_to "This week", :action => "search", :q => params[:q], :time => "week" %></li>
-	     <% if params[:time] == "month" %> 
+	     <% if params[:time] == nil %> 
 	     <li class="active"> 
 	     <%else%>
 	     <li>
@@ -41,7 +41,7 @@
 
 <div class="span4">
 		<div class="topic_navigation">
-		Subtopics:
+		Subgenres:
 		
 		<br><br>
 		<table class="table table-striped">

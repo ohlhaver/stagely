@@ -31,10 +31,11 @@ class EventsController < ApplicationController
       @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..7.days.from_now} 
     elsif params[:time] == "tomorrow"
       @events = Event.search params[:q], :match_mode => :any, :with => {:date => Time.zone.parse(Date.tomorrow.to_s(:db))..Time.zone.parse(Date.tomorrow.tomorrow.to_s(:db))}
-    elsif params[:time] == "month"
-      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now}
-    else
+    elsif params[:time] == "today"
       @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..Time.zone.parse(Date.tomorrow.to_s(:db))}
+      
+    else
+      @events = Event.search params[:q], :match_mode => :any, :with => {:date => 1.hour.ago..30.days.from_now}
     end
     find_topics(@events)
     @search_breadcrumb = params[:q]
@@ -165,12 +166,12 @@ class EventsController < ApplicationController
         me = FbGraph::User.me(token)
         if type == "attend"
           me.feed!(
-            :message => 'will attend "' + event.artist.name + '" ' + event_url
+            :message => 'will attend "' + event.artist.name + ' @ ' + event.venue.name + ', ' + event.venue.town + '" ' + event_url
 
           )
         else
           me.feed!(
-            :message => 'considers attending "' + event.artist.name + '" ' + event_url
+            :message => 'considers attending "' + event.artist.name + ' @ ' + event.venue.name + '" ' + event_url
           )
         end
 

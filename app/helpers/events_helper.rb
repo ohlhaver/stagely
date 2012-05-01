@@ -19,7 +19,7 @@ module EventsHelper
 	end
 
 	def tweet_text(event)
-		"#{event.artist.name}, #{event.date.strftime("%b%d")}, #{event.time.strftime("%I:%M%p")}, #{event.venue.town},"
+		"#{event.artist.name} @ #{event.venue.name}, #{event.venue.town}, #{event.date.strftime("%b%d")}, #{event.time.strftime("%I:%M%p")},"
 	end
 
 	def author(event)
