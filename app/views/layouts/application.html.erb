@@ -77,7 +77,7 @@
         </div>
       <% end %>
       <div class="row">
-        <% if params[:action] != "index" %>
+        <% if params[:action] != "index" and params[:controller] != "genres" and params[:controller] != "subgenres"%>
           
             <div class="span8">
                     <ul class="breadcrumb" style="list-style-type:none">
@@ -125,7 +125,7 @@
   <div class ="footer">
 
 <br>
-  <%= link_to "(c) ", artists_path%> 
-  <%= link_to "stage.ly", venues_path%> 
+  <%= link_to "(c) ", genres_path%> 
+  <%= link_to "stage.", artists_path%><%= link_to "ly", venues_path %> 
   </div>
 </html>

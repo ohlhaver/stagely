@@ -1,13 +1,41 @@
+<% provide :title, @subgenre.name + " in New York City"%>
 <div class="span8">
 <div id ="event_details">
 <h3><%= (link_to @subgenre.genre.name, genre_path(@subgenre.genre)) %> > <%= @subgenre.name %></h3>
 </div>
 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Artists</th>
+      <th>Upcoming concerts</th>
 
 
+    </tr>
+  </thead>
+  <tbody>
+    <% @subgenre.artists.each do |artist| %>
+      <tr>
+        
+        <td><%= link_to artist.name, artist_path(artist) %></td>
+        <td><%= artist.events.where("date > ?",Time.now).size %></td>
+        <% if current_user && current_user.uid == "568790501" %>
+        <td>
+          <%= link_to 'Edit', edit_artist_path(artist), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', artist_path(artist), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<% if current_user && current_user.uid == "568790501" %>
 <div class="form-actions">
   <%= link_to 'Back', subgenres_path, :class => 'btn'  %>
   <%= link_to 'Edit', edit_subgenre_path(@subgenre), :class => 'btn' %>
   <%= link_to 'Delete', subgenre_path(@subgenre), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
 </div>
+<%end%>
 </div>

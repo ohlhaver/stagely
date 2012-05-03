@@ -1,5 +1,9 @@
 <% provide :title, params[:q] + " in New York City" %>
 <div class="span8">
+	<div id ="event_details">
+
+		<h3><%= params[:q] + " in New York City" %></h3>
+	</div>
 
 	<ul class="nav nav-tabs">
 	     <% if params[:time] == "today" %> 
@@ -26,7 +30,7 @@
 	     <%else%>
 	     <li>
 	     <%end%>
-	    <%= link_to "This month", :action => "search", :q => params[:q], :time => "month" %></li>
+	    <%= link_to "This month", :action => "search", :q => params[:q] %></li>
 	</ul>
 
 <table class="table table-striped">
@@ -41,7 +45,7 @@
 
 <div class="span4">
 		<div class="topic_navigation">
-		Subgenres:
+		Related:
 		
 		<br><br>
 		<table class="table table-striped">

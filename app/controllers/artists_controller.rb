@@ -1,4 +1,6 @@
 class ArtistsController < InheritedResources::Base
+  before_filter :authorize, only: [:edit, :update, :new, :create, :destroy]
+  before_filter :power_user, only: [ :edit, :update, :destroy]
 	def show
     @artist = Artist.find(params[:id])
 

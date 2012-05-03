@@ -22,9 +22,11 @@ class ApplicationController < ActionController::Base
     all_keywords =""
       events.each do |e|
         (all_keywords = all_keywords + ", " + e.artist.subgenre.name) unless e.artist.subgenre == nil
+        (all_keywords = all_keywords + ", " + e.artist.subgenre.genre.name) unless e.artist.subgenre.genre == nil
       end
 
       all_keywords_array = all_keywords.split(/,\s*/)
+      all_keywords_array.delete(params[:q])
       keywords_with_values = all_keywords_array.inject(Hash.new(0)) {|h,x| h[x]+=1;h}
       ranked_array = keywords_with_values.sort_by { |key, value| -value }
       words =[]

@@ -1,2 +1,2 @@
-<%= @event.venue.street %><%= link_to image_tag("external-link.gif"),"http://maps.google.de/maps?q=#{@event.venue.street}+#{@event.venue.postal_code}" %>	 (<%= link_to @event.venue.town, :controller => "events", :action => "search", :q => @event.venue.town, :time => "month" %>)
+<%= @event.venue.street %><%= link_to image_tag("external-link.gif"),"http://maps.google.de/maps?q=#{@event.venue.street}+#{@event.venue.postal_code}" %>	 (<%= link_to @event.venue.town, :controller => "events", :action => "search", :q => @event.venue.town %>)
 	
